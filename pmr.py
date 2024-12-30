@@ -24,7 +24,7 @@ from unidecode import unidecode
 from scipy.spatial import ConvexHull
 import streamlit as st
 
-# rcParams['font.family'] = 'Segoe UI'
+rcParams['font.family'] = 'Segoe UI'
 
 green = '#69f900'
 red = '#ff4b44'
@@ -4298,31 +4298,31 @@ if league and gm_wk and htn and atn:
                     for j, count in enumerate([progressor_pp[i], progressor_pc[i]]):
                         if count > 0:
                             x_position = sum([progressor_pp[i], progressor_pc[i]][:j]) + count / 2
-                            ax.text(x_position, i, str(count), ha='center', va='center', color=bg_color, fontsize=100, fontweight='bold')
+                            ax.text(x_position, i, str(count), ha='center', va='center', color=bg_color, fontsize=50, fontweight='bold')
                     # Add total count at the end of the bar
-                    ax.text(progressor_df['total'].iloc[i] + 0.25, 9-i, str(progressor_df['total'].iloc[i]), ha='left', va='center', color=line_color, fontsize=100, fontweight='bold')
+                    ax.text(progressor_df['total'].iloc[i] + 0.25, 9-i, str(progressor_df['total'].iloc[i]), ha='left', va='center', color=line_color, fontsize=50, fontweight='bold')
                     # Plotting the logos
                     himg = urlopen(f"https://images.fotmob.com/image_resources/logo/teamlogo/{hftmb_tid}.png")
                     htimg = Image.open(himg).convert('RGBA')
-                    himagebox = OffsetImage(htimg, zoom=1)
+                    himagebox = OffsetImage(htimg, zoom=0.5)
                     aimg = urlopen(f"https://images.fotmob.com/image_resources/logo/teamlogo/{aftmb_tid}.png")
                     atimg = Image.open(aimg).convert('RGBA')
-                    aimagebox = OffsetImage(atimg, zoom=1)
+                    aimagebox = OffsetImage(atimg, zoom=0.5)
                     for i, row in progressor_df.iterrows():
                         if row['team names'] == hteamName:
                             timagebox = himagebox
                         else:
                             timagebox = aimagebox
                           # Adjust zoom as needed
-                        ab = AnnotationBbox(timagebox, (0, 9-i), frameon=False, xybox=(-200, 0), xycoords='data', boxcoords="offset points")
+                        ab = AnnotationBbox(timagebox, (0, 9-i), frameon=False, xybox=(-100, 0), xycoords='data', boxcoords="offset points")
                         ax.add_artist(ab)
             
                 ax.set_facecolor(bg_color)
-                ax.tick_params(axis='x', colors=line_color, labelsize=75, pad=100)
-                ax.tick_params(axis='y', colors=line_color, labelsize=100, pad=400)
+                ax.tick_params(axis='x', colors=line_color, labelsize=35, pad=50)
+                ax.tick_params(axis='y', colors=line_color, labelsize=50, pad=200)
                 ax.xaxis.label.set_color(bg_color)
                 ax.yaxis.label.set_color(bg_color)
-                ax.grid(True, zorder=1, ls='dotted', lw=5, color='gray')
+                ax.grid(True, zorder=1, ls='dotted', lw=2.5, color='gray')
                 ax.set_facecolor('#ededed')
                 # Customize the spines
                 ax.spines['top'].set_visible(False)     # Hide the top spine
@@ -4330,10 +4330,10 @@ if league and gm_wk and htn and atn:
                 ax.spines['bottom'].set_visible(True)   # Keep the bottom spine visible
                 ax.spines['left'].set_visible(True)
                 # Increase Linewidth
-                ax.spines['bottom'].set_linewidth(5)   # Adjust the bottom spine line width
-                ax.spines['left'].set_linewidth(5)  
+                ax.spines['bottom'].set_linewidth(2.5)   # Adjust the bottom spine line width
+                ax.spines['left'].set_linewidth(2.5)  
             
-                ax.legend(fontsize=75, loc='lower right')
+                ax.legend(fontsize=35, loc='lower right')
                 return 
             
             def sh_sq_bar(ax):
@@ -4349,31 +4349,31 @@ if league and gm_wk and htn and atn:
                     for j, count in enumerate(top10[['Shots', 'Shot Assists', 'Buildup to Shot']].iloc[i]):
                         if count > 0:
                             x_position = sum(top10.iloc[i, 1:1+j]) + count / 2
-                            ax.text(x_position, i, str(count), ha='center', va='center', color=bg_color, fontsize=100, fontweight='bold')
+                            ax.text(x_position, i, str(count), ha='center', va='center', color=bg_color, fontsize=50, fontweight='bold')
                     # Add total count at the end of the bar
-                    ax.text(top10['total'].iloc[i] + 0.25, i, str(top10['total'].iloc[i]), ha='left', va='center', color=line_color, fontsize=100, fontweight='bold')
+                    ax.text(top10['total'].iloc[i] + 0.25, i, str(top10['total'].iloc[i]), ha='left', va='center', color=line_color, fontsize=50, fontweight='bold')
                     # Plotting the logos
                     himg = urlopen(f"https://images.fotmob.com/image_resources/logo/teamlogo/{hftmb_tid}.png")
                     htimg = Image.open(himg).convert('RGBA')
-                    himagebox = OffsetImage(htimg, zoom=1)
+                    himagebox = OffsetImage(htimg, zoom=0.5)
                     aimg = urlopen(f"https://images.fotmob.com/image_resources/logo/teamlogo/{aftmb_tid}.png")
                     atimg = Image.open(aimg).convert('RGBA')
-                    aimagebox = OffsetImage(atimg, zoom=1)
+                    aimagebox = OffsetImage(atimg, zoom=0.5)
                     for i, row in top10.iterrows():
                         if row['team names'] == hteamName:
                             timagebox = himagebox
                         else:
                             timagebox = aimagebox
                           # Adjust zoom as needed
-                        ab = AnnotationBbox(timagebox, (0, 9-i), frameon=False, xybox=(-200, 0), xycoords='data', boxcoords="offset points")
+                        ab = AnnotationBbox(timagebox, (0, 9-i), frameon=False, xybox=(-100, 0), xycoords='data', boxcoords="offset points")
                         ax.add_artist(ab)
             
                 ax.set_facecolor(bg_color)
-                ax.tick_params(axis='x', colors=line_color, labelsize=75, pad=100)
-                ax.tick_params(axis='y', colors=line_color, labelsize=100, pad=400)
+                ax.tick_params(axis='x', colors=line_color, labelsize=35, pad=50)
+                ax.tick_params(axis='y', colors=line_color, labelsize=50, pad=200)
                 ax.xaxis.label.set_color(bg_color)
                 ax.yaxis.label.set_color(bg_color)
-                ax.grid(True, zorder=1, ls='dotted', lw=5, color='gray')
+                ax.grid(True, zorder=1, ls='dotted', lw=2.5, color='gray')
                 ax.set_facecolor('#ededed')
                 # Customize the spines
                 ax.spines['top'].set_visible(False)     # Hide the top spine
@@ -4381,10 +4381,10 @@ if league and gm_wk and htn and atn:
                 ax.spines['bottom'].set_visible(True)   # Keep the bottom spine visible
                 ax.spines['left'].set_visible(True)
                 # Increase Linewidth
-                ax.spines['bottom'].set_linewidth(5)   # Adjust the bottom spine line width
-                ax.spines['left'].set_linewidth(5)  
+                ax.spines['bottom'].set_linewidth(2.5)   # Adjust the bottom spine line width
+                ax.spines['left'].set_linewidth(2.5)  
             
-                ax.legend(fontsize=75, loc='lower right')
+                ax.legend(fontsize=35, loc='lower right')
                 
             def top_defender(ax):
                 top10 = defender_df.head(10).iloc[::-1]
@@ -4399,31 +4399,31 @@ if league and gm_wk and htn and atn:
                     for j, count in enumerate(top10[['Tackles', 'Interceptions', 'Clearance']].iloc[i]):
                         if count > 0:
                             x_position = sum(top10.iloc[i, 1:1+j]) + count / 2
-                            ax.text(x_position, i, str(count), ha='center', va='center', color=bg_color, fontsize=100, fontweight='bold')
+                            ax.text(x_position, i, str(count), ha='center', va='center', color=bg_color, fontsize=50, fontweight='bold')
                     # Add total count at the end of the bar
-                    ax.text(top10['total'].iloc[i] + 0.25, i, str(top10['total'].iloc[i]), ha='left', va='center', color=line_color, fontsize=100, fontweight='bold')
+                    ax.text(top10['total'].iloc[i] + 0.25, i, str(top10['total'].iloc[i]), ha='left', va='center', color=line_color, fontsize=50, fontweight='bold')
                     # Plotting the logos
                     himg = urlopen(f"https://images.fotmob.com/image_resources/logo/teamlogo/{hftmb_tid}.png")
                     htimg = Image.open(himg).convert('RGBA')
-                    himagebox = OffsetImage(htimg, zoom=1)
+                    himagebox = OffsetImage(htimg, zoom=0.5)
                     aimg = urlopen(f"https://images.fotmob.com/image_resources/logo/teamlogo/{aftmb_tid}.png")
                     atimg = Image.open(aimg).convert('RGBA')
-                    aimagebox = OffsetImage(atimg, zoom=1)
+                    aimagebox = OffsetImage(atimg, zoom=0.5)
                     for i, row in top10.iterrows():
                         if row['team names'] == hteamName:
                             timagebox = himagebox
                         else:
                             timagebox = aimagebox
                           # Adjust zoom as needed
-                        ab = AnnotationBbox(timagebox, (0, 9-i), frameon=False, xybox=(-200, 0), xycoords='data', boxcoords="offset points")
+                        ab = AnnotationBbox(timagebox, (0, 9-i), frameon=False, xybox=(-100, 0), xycoords='data', boxcoords="offset points")
                         ax.add_artist(ab)
             
                 ax.set_facecolor(bg_color)
-                ax.tick_params(axis='x', colors=line_color, labelsize=75, pad=100)
-                ax.tick_params(axis='y', colors=line_color, labelsize=100, pad=400)
+                ax.tick_params(axis='x', colors=line_color, labelsize=35, pad=50)
+                ax.tick_params(axis='y', colors=line_color, labelsize=50, pad=200)
                 ax.xaxis.label.set_color(bg_color)
                 ax.yaxis.label.set_color(bg_color)
-                ax.grid(True, zorder=1, ls='dotted', lw=5, color='gray')
+                ax.grid(True, zorder=1, ls='dotted', lw=2.5, color='gray')
                 ax.set_facecolor('#ededed')
                 # Customize the spines
                 ax.spines['top'].set_visible(False)     # Hide the top spine
@@ -4431,15 +4431,15 @@ if league and gm_wk and htn and atn:
                 ax.spines['bottom'].set_visible(True)   # Keep the bottom spine visible
                 ax.spines['left'].set_visible(True)
                 # Increase Linewidth
-                ax.spines['bottom'].set_linewidth(5)   # Adjust the bottom spine line width
-                ax.spines['left'].set_linewidth(5)  
+                ax.spines['bottom'].set_linewidth(2.5)   # Adjust the bottom spine line width
+                ax.spines['left'].set_linewidth(2.5)  
             
-                ax.legend(fontsize=75, loc='lower right')
+                ax.legend(fontsize=35, loc='lower right')
             
                 return
             
             def xT_bar(ax):
-                path_eff = [path_effects.Stroke(linewidth=5, foreground=line_color), path_effects.Normal()]
+                path_eff = [path_effects.Stroke(linewidth=2.5, foreground=line_color), path_effects.Normal()]
                 top10_progressors = xT_df['shortName'][::-1].tolist()
                 progressor_pp = xT_df['xT from Pass'][::-1].tolist()
                 progressor_pc = xT_df['xT from Carry'][::-1].tolist()
@@ -4453,31 +4453,31 @@ if league and gm_wk and htn and atn:
                     for j, count in enumerate([progressor_pp[i], progressor_pc[i]]):
                         if count > 0:
                             x_position = sum([progressor_pp[i], progressor_pc[i]][:j]) + count / 2
-                            ax.text(x_position, i, f"{count:.2f}", ha='center', va='center', color=bg_color, rotation=45, fontsize=100, fontweight='bold', path_effects=path_eff)
+                            ax.text(x_position, i, f"{count:.2f}", ha='center', va='center', color=bg_color, rotation=45, fontsize=50, fontweight='bold', path_effects=path_eff)
                     # Add total count at the end of the bar
-                    ax.text(xT_df['total'].iloc[i] + 0.01, 9-i, f"{total_rounded[i]:.2f}", ha='left', va='center', color=line_color, fontsize=100, fontweight='bold')
+                    ax.text(xT_df['total'].iloc[i] + 0.01, 9-i, f"{total_rounded[i]:.2f}", ha='left', va='center', rotation=45, color=line_color, fontsize=50, fontweight='bold')
                     # Plotting the logos
                     himg = urlopen(f"https://images.fotmob.com/image_resources/logo/teamlogo/{hftmb_tid}.png")
                     htimg = Image.open(himg).convert('RGBA')
-                    himagebox = OffsetImage(htimg, zoom=1)
+                    himagebox = OffsetImage(htimg, zoom=0.5)
                     aimg = urlopen(f"https://images.fotmob.com/image_resources/logo/teamlogo/{aftmb_tid}.png")
                     atimg = Image.open(aimg).convert('RGBA')
-                    aimagebox = OffsetImage(atimg, zoom=1)
+                    aimagebox = OffsetImage(atimg, zoom=0.5)
                     for i, row in xT_df.iterrows():
                         if row['team names'] == hteamName:
                             timagebox = himagebox
                         else:
                             timagebox = aimagebox
                           # Adjust zoom as needed
-                        ab = AnnotationBbox(timagebox, (0, 9-i), frameon=False, xybox=(-200, 0), xycoords='data', boxcoords="offset points")
+                        ab = AnnotationBbox(timagebox, (0, 9-i), frameon=False, xybox=(-100, 0), xycoords='data', boxcoords="offset points")
                         ax.add_artist(ab)
             
                 ax.set_facecolor(bg_color)
-                ax.tick_params(axis='x', colors=line_color, labelsize=75, pad=100)
-                ax.tick_params(axis='y', colors=line_color, labelsize=100, pad=400)
+                ax.tick_params(axis='x', colors=line_color, labelsize=35, pad=50)
+                ax.tick_params(axis='y', colors=line_color, labelsize=50, pad=200)
                 ax.xaxis.label.set_color(bg_color)
                 ax.yaxis.label.set_color(bg_color)
-                ax.grid(True, zorder=1, ls='dotted', lw=5, color='gray')
+                ax.grid(True, zorder=1, ls='dotted', lw=2.5, color='gray')
                 ax.set_facecolor('#ededed')
                 # Customize the spines
                 ax.spines['top'].set_visible(False)     # Hide the top spine
@@ -4485,46 +4485,46 @@ if league and gm_wk and htn and atn:
                 ax.spines['bottom'].set_visible(True)   # Keep the bottom spine visible
                 ax.spines['left'].set_visible(True)
                 # Increase Linewidth
-                ax.spines['bottom'].set_linewidth(5)   # Adjust the bottom spine line width
-                ax.spines['left'].set_linewidth(5)  
+                ax.spines['bottom'].set_linewidth(2.5)   # Adjust the bottom spine line width
+                ax.spines['left'].set_linewidth(2.5)  
             
-                ax.legend(fontsize=75, loc='lower right')
+                ax.legend(fontsize=35, loc='lower right')
                 return
             
             
             if top_type == 'Top Ball Progressors':
-                fig,ax = plt.subplots(figsize=(50,50), facecolor=bg_color)
+                fig,ax = plt.subplots(figsize=(25,25), facecolor=bg_color)
                 passer_bar(ax)
                 
-                fig.text(0.35, 1.02, 'Top Ball Progressors', fontsize=150, fontweight='bold', ha='center', va='center')
-                fig.text(0.35, 0.97, f'in the match {hteamName} {hgoal_count} - {agoal_count} {ateamName}', color='#1a1a1a', fontsize=100, ha='center', va='center')  
+                fig.text(0.35, 1.02, 'Top Ball Progressors', fontsize=75, fontweight='bold', ha='center', va='center')
+                fig.text(0.35, 0.97, f'in the match {hteamName} {hgoal_count} - {agoal_count} {ateamName}', color='#1a1a1a', fontsize=50, ha='center', va='center')  
                 
                 st.pyplot(fig)
                 
             if top_type == 'Top Shot Sequences Involvements':
-                fig,ax = plt.subplots(figsize=(50,50), facecolor=bg_color)
+                fig,ax = plt.subplots(figsize=(25,25), facecolor=bg_color)
                 sh_sq_bar(ax)
                 
-                fig.text(0.35, 1.02, 'Top Shot Sequence Involvements', fontsize=150, fontweight='bold', ha='center', va='center')
-                fig.text(0.35, 0.97, f'in the match {hteamName} {hgoal_count} - {agoal_count} {ateamName}', color='#1a1a1a', fontsize=100, ha='center', va='center')
+                fig.text(0.35, 1.02, 'Top Shot Sequence Involvements', fontsize=75, fontweight='bold', ha='center', va='center')
+                fig.text(0.35, 0.97, f'in the match {hteamName} {hgoal_count} - {agoal_count} {ateamName}', color='#1a1a1a', fontsize=50, ha='center', va='center')
                 
                 st.pyplot(fig)
                 
             if top_type == 'Top Defensive Involvements':
-                fig,ax = plt.subplots(figsize=(50,50), facecolor=bg_color)
+                fig,ax = plt.subplots(figsize=(25,25), facecolor=bg_color)
                 top_defender(ax)
                 
-                fig.text(0.35, 1.02, 'Top Defensive Involvements', fontsize=150, fontweight='bold', ha='center', va='center')
-                fig.text(0.35, 0.97, f'in the match {hteamName} {hgoal_count} - {agoal_count} {ateamName}', color='#1a1a1a', fontsize=100, ha='center', va='center')  
+                fig.text(0.35, 1.02, 'Top Defensive Involvements', fontsize=75, fontweight='bold', ha='center', va='center')
+                fig.text(0.35, 0.97, f'in the match {hteamName} {hgoal_count} - {agoal_count} {ateamName}', color='#1a1a1a', fontsize=50, ha='center', va='center')  
                 
                 st.pyplot(fig)
                 
             if top_type == 'Top Threat Creating Players':
-                fig,ax = plt.subplots(figsize=(50,50), facecolor=bg_color)
+                fig,ax = plt.subplots(figsize=(25,25), facecolor=bg_color)
                 xT_bar(ax)
                 
-                fig.text(0.35, 1.02, 'Top Threat Creating Players', fontsize=150, fontweight='bold', ha='center', va='center')
-                fig.text(0.35, 0.97, f'in the match {hteamName} {hgoal_count} - {agoal_count} {ateamName}', color='#1a1a1a', fontsize=100, ha='center', va='center')
+                fig.text(0.35, 1.02, 'Top Threat Creating Players', fontsize=75, fontweight='bold', ha='center', va='center')
+                fig.text(0.35, 0.97, f'in the match {hteamName} {hgoal_count} - {agoal_count} {ateamName}', color='#1a1a1a', fontsize=50, ha='center', va='center')
                 
                 st.pyplot(fig)
             
