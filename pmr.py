@@ -26,7 +26,7 @@ from scipy.spatial import ConvexHull
 import streamlit as st
 
 # rcParams['font.family'] = 'Arial'
-mpl.rcParams['font.family'] = mpl.rcParamsDefault['font.family']
+# mpl.rcParams['font.family'] = mpl.rcParamsDefault['font.family']
 
 green = '#69f900'
 red = '#ff4b44'
@@ -2511,7 +2511,7 @@ if league and gm_wk and htn and atn:
                 st.pyplot(fig)
                 
         with tab2:
-            team_player = st.pills("", [f"{hteamName} Players", f"{ateamName} Players", f'{hteamName} GK', f'{ateamName} GK'], selection_mode='single', default=None, key='selecting_team_for_player_analysis')
+            team_player = st.pills("", [f"{hteamName} Players", f"{ateamName} Players", f'{hteamName} GK', f'{ateamName} GK'], selection_mode='single', default=f"{hteamName} Players", key='selecting_team_for_player_analysis')
             def offensive_actions(ax, pname):
                 # Viz Dfs:
                 playerdf = df[df['name']==pname]
@@ -3149,7 +3149,7 @@ if league and gm_wk and htn and atn:
             
             if team_player == f"{hteamName} Players":
                 home_pname_df = homedf[(homedf['name'] != 'nan') & (homedf['position']!='GK')]
-                hpname = st.selectbox('Select Player:', home_pname_df.name.unique(), index=None, key='home_player_analysis')
+                hpname = st.selectbox('Select Player:', home_pname_df.name.unique(), index=0, key='home_player_analysis')
                 if st.session_state.home_player_analysis:
                     st.header(f'{hpname} Prformance Dashboard')
                     generate_player_dahsboard(f'{hpname}', hftmb_tid)
@@ -3186,7 +3186,7 @@ if league and gm_wk and htn and atn:
                     
             if team_player == f"{ateamName} Players":
                 away_pname_df = awaydf[(awaydf['name'] != 'nan') & (awaydf['position']!='GK')]
-                apname = st.selectbox('Select Player:', away_pname_df.name.unique(), index=None, key='away_player_analysis')
+                apname = st.selectbox('Select Player:', away_pname_df.name.unique(), index=0, key='away_player_analysis')
                 if st.session_state.away_player_analysis:
                     st.header(f'{apname} Prformance Dashboard')
                     generate_player_dahsboard(f'{apname}', aftmb_tid)
@@ -3223,20 +3223,20 @@ if league and gm_wk and htn and atn:
                     
             if team_player == f'{hteamName} GK':
                 home_gk_df = homedf[(homedf['name'] != 'nan') & (homedf['position']=='GK')]
-                pname = st.selectbox('Select Player:', home_gk_df.name.unique(), index=None, key='home_player_analysis')
+                pname = st.selectbox('Select Player:', home_gk_df.name.unique(), index=0, key='home_player_analysis')
                 if st.session_state.home_player_analysis:
                     st.header(f'{pname} Prformance Dashboard')
                     generate_gk_dahsboard(f'{pname}', hftmb_tid)
                     
             if team_player == f'{ateamName} GK':
                 away_gk_df = awaydf[(awaydf['name'] != 'nan') & (awaydf['position']=='GK')]
-                pname = st.selectbox('Select Player:', away_gk_df.name.unique(), index=None, key='home_player_analysis')
+                pname = st.selectbox('Select Player:', away_gk_df.name.unique(), index=0, key='home_player_analysis')
                 if st.session_state.home_player_analysis:
                     st.header(f'{pname} Prformance Dashboard')
                     generate_gk_dahsboard(f'{pname}', aftmb_tid)
                     
         with tab3:
-            stats_type = st.pills("", ["Key Stats", "Shooting Stats", "Passing Stats", "Defensive Stats", "Other Stats"], selection_mode='single', default=None, key='selecting_stats_type')
+            stats_type = st.pills("", ["Key Stats", "Shooting Stats", "Passing Stats", "Defensive Stats", "Other Stats"], selection_mode='single', default="Key Stats", key='selecting_stats_type')
             if stats_type == "Key Stats":
                 
                 def key_stats(ax, phase_tag):
@@ -4535,7 +4535,7 @@ if league and gm_wk and htn and atn:
         st.write(' ')
 
 else:
-    st.write('Please Input a valid match info')
+    st.write('Please Input a valid match info from Left Pannel')
     
     
     
