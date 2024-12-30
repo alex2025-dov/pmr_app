@@ -4530,7 +4530,10 @@ if league and gm_wk and htn and atn:
             
         
     else:
-        st.write('Please input a valid match info')
+        st.write(' ')
+
+else:
+    st.write('Please Input a valid match info')
     
     
     
