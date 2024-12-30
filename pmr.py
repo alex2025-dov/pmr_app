@@ -3157,7 +3157,6 @@ if league and gm_wk and htn and atn:
                     
                     with col1:
                         st.subheader('Shooting Stats')
-                        text_area = st.text_
                         for key, value in shooting_stats_dict.items():
                             st.text(f"{key}: {value}")
                     with col2:
