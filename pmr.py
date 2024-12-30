@@ -3050,7 +3050,7 @@ if league and gm_wk and htn and atn:
                     'Open Play Shots': len(op_shots),
                     'Shots from Inside the Box': len(pshots) - len(out_b),
                     'Shots from Outside the Box': len(out_b),
-                    'Avg. Shot Distance': avg_shots_dist,
+                    'Avg. Shot Distance': f'{avg_shots_dist}m',
                     'Penalties Taken': len(pen_t),
                     'Penalties Missed': len(pen_m),
                     'Shots from Freekick': len(frk_shots),
