@@ -25,6 +25,7 @@ from scipy.spatial import ConvexHull
 import streamlit as st
 
 # rcParams['font.family'] = 'Arial'
+mpl.rcParams['font.family'] = mpl.rcParamsDefault['font.family']
 
 green = '#69f900'
 red = '#ff4b44'
