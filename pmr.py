@@ -24,7 +24,7 @@ from unidecode import unidecode
 from scipy.spatial import ConvexHull
 import streamlit as st
 
-rcParams['font.family'] = 'Segoe UI'
+# rcParams['font.family'] = 'Segoe UI'
 
 green = '#69f900'
 red = '#ff4b44'
