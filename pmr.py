@@ -24,7 +24,7 @@ from unidecode import unidecode
 from scipy.spatial import ConvexHull
 import streamlit as st
 
-rcParams['font.family'] = 'Tahoma'
+# rcParams['font.family'] = 'Arial'
 
 green = '#69f900'
 red = '#ff4b44'
@@ -3461,11 +3461,11 @@ if league and gm_wk and htn and atn:
                 
                 himage = urlopen(f"https://images.fotmob.com/image_resources/logo/teamlogo/{hftmb_tid}.png")
                 himage = Image.open(himage)
-                ax_himage = add_image(himage, fig, left=0.16, bottom=0.83, width=0.11, height=0.11)
+                ax_himage = add_image(himage, fig, left=0.12, bottom=0.83, width=0.11, height=0.11)
                 
                 aimage = urlopen(f"https://images.fotmob.com/image_resources/logo/teamlogo/{aftmb_tid}.png")
                 aimage = Image.open(aimage)
-                ax_aimage = add_image(aimage, fig, left=0.74, bottom=0.83, width=0.11, height=0.11)
+                ax_aimage = add_image(aimage, fig, left=0.78, bottom=0.83, width=0.11, height=0.11)
                 
                 st.pyplot(fig)
                     
@@ -3619,7 +3619,7 @@ if league and gm_wk and htn and atn:
                 if shooting_stats_time_phase=='Second Half':
                     plot_shooting_stats(ax, 'Second Half')
                     
-                fig_text(0.5, 0.98, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=27, fontweight='bold', ha='center', va='center', ax=fig)
+                fig_text(0.5, 0.98, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=23, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 0.95, 'Shooting Stats of the Match', fontsize=18, ha='center', va='center')
                 
                 himage = urlopen(f"https://images.fotmob.com/image_resources/logo/teamlogo/{hftmb_tid}.png")
@@ -3865,7 +3865,7 @@ if league and gm_wk and htn and atn:
                 if passing_stats_time_phase=='Second Half':
                     plot_passing_stats(ax, 'Second Half')
                     
-                fig_text(0.5, 0.98, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=27, fontweight='bold', ha='center', va='center', ax=fig)
+                fig_text(0.5, 0.98, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=24, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 0.95, 'Passing Stats of the Match', fontsize=18, ha='center', va='center')
                 
                 himage = urlopen(f"https://images.fotmob.com/image_resources/logo/teamlogo/{hftmb_tid}.png")
@@ -4061,7 +4061,7 @@ if league and gm_wk and htn and atn:
                 if defending_stats_time_phase=='Second Half':
                     plot_defending_stats(ax, 'Second Half')
                     
-                fig_text(0.5, 1.01, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=27, fontweight='bold', ha='center', va='center', ax=fig)
+                fig_text(0.5, 1.01, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=24, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 0.97, 'Defensive Stats of the Match', fontsize=18, ha='center', va='center')
                 
                 himage = urlopen(f"https://images.fotmob.com/image_resources/logo/teamlogo/{hftmb_tid}.png")
@@ -4184,7 +4184,7 @@ if league and gm_wk and htn and atn:
                 if other_stats_time_phase=='Second Half':
                     plot_other_stats(ax, 'Second Half')
                     
-                fig_text(0.5, 1.02, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=27, fontweight='bold', ha='center', va='center', ax=fig)
+                fig_text(0.5, 1.02, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=24, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 0.98, 'Other Stats of the Match', fontsize=18, ha='center', va='center')
                 
                 himage = urlopen(f"https://images.fotmob.com/image_resources/logo/teamlogo/{hftmb_tid}.png")
