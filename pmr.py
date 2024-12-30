@@ -281,7 +281,7 @@ if league and gm_wk and htn and atn:
             
             
             # xT = pd.read_csv('https://raw.githubusercontent.com/mckayjohns/youtube-videos/main/data/xT_Grid.csv', header=None)
-            xT = pd.read_csv(r"D:\FData\xT_Grid.csv", header=None)
+            xT = pd.read_csv("https://raw.githubusercontent.com/adnaaan433/Post-Match-Report-2.0/refs/heads/main/xT_Grid.csv", header=None)
             xT = np.array(xT)
             xT_rows, xT_cols = xT.shape
             
