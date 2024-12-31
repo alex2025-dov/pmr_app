@@ -35,6 +35,11 @@ bg_color= '#f5f5f5'
 line_color= '#000000'
 col1 = '#ff4b44'
 col2 = '#00a0de'
+
+st.sidebar.title('Match Selection')
+st.title('Post Match Report')
+st.text('Data from: Opta,   Made by: Adnan,   twitter: @adnaaan433')
+st.divider()
     
 # Set up session state for selected values
 if 'confirmed' not in st.session_state:
@@ -64,7 +69,7 @@ if league and htn and atn:
     
     if st.session_state.confirmed:
         @st.cache_data
-        def get_event_data(league, gm_wk, htn, atn):
+        def get_event_data(league, htn, atn):
             # Construct the file path
             # match_html_path = f"https://raw.githubusercontent.com/adnaaan433/First-App/refs/heads/main/MatchEventData/{league}/GW{gm_wk}/{htn}_vs_{atn}.html"
             match_html_path = f"https://raw.githubusercontent.com/adnaaan433/git_d4t4_p/refs/heads/main/{league}/{htn}_vs_{atn}.html"
