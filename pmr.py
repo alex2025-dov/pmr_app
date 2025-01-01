@@ -3163,7 +3163,7 @@ if league and htn and atn:
                 home_pname_df = homedf[(homedf['name'] != 'nan') & (homedf['position']!='GK')]
                 hpname = st.selectbox('Select a Player:', home_pname_df.name.unique(), index=None, key='home_player_analysis')
                 if st.session_state.home_player_analysis:
-                    st.header(f'{hpname} Prformance Dashboard')
+                    st.header(f'{hpname} Performance Dashboard')
                     generate_player_dahsboard(f'{hpname}', hftmb_tid)
                     
                     shooting_stats_dict, passing_stats_dict, carry_stats_dict, pass_receiving_stats_dict, defensive_stats_dict, other_stats_dict = player_detailed_data(hpname)
