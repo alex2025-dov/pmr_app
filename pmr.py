@@ -3142,7 +3142,7 @@ if league and htn and atn:
             
             if team_player == f"{hteamName} Players":
                 home_pname_df = homedf[(homedf['name'] != 'nan') & (homedf['position']!='GK')]
-                hpname = st.selectbox('Select Player:', home_pname_df.name.unique(), index=0, key='home_player_analysis')
+                hpname = st.selectbox('Select a Player:', home_pname_df.name.unique(), index=None, key='home_player_analysis')
                 if st.session_state.home_player_analysis:
                     st.header(f'{hpname} Prformance Dashboard')
                     generate_player_dahsboard(f'{hpname}', hftmb_tid)
@@ -3179,7 +3179,7 @@ if league and htn and atn:
                     
             if team_player == f"{ateamName} Players":
                 away_pname_df = awaydf[(awaydf['name'] != 'nan') & (awaydf['position']!='GK')]
-                apname = st.selectbox('Select Player:', away_pname_df.name.unique(), index=0, key='away_player_analysis')
+                apname = st.selectbox('Select a Player:', away_pname_df.name.unique(), index=None, key='away_player_analysis')
                 if st.session_state.away_player_analysis:
                     st.header(f'{apname} Prformance Dashboard')
                     generate_player_dahsboard(f'{apname}', aftmb_tid)
@@ -3216,14 +3216,14 @@ if league and htn and atn:
                     
             if team_player == f'{hteamName} GK':
                 home_gk_df = homedf[(homedf['name'] != 'nan') & (homedf['position']=='GK')]
-                pname = st.selectbox('Select Player:', home_gk_df.name.unique(), index=0, key='home_player_analysis')
+                pname = st.selectbox('Select a Goal-Keeper:', home_gk_df.name.unique(), index=None, key='home_player_analysis')
                 if st.session_state.home_player_analysis:
                     st.header(f'{pname} Prformance Dashboard')
                     generate_gk_dahsboard(f'{pname}', hftmb_tid)
                     
             if team_player == f'{ateamName} GK':
                 away_gk_df = awaydf[(awaydf['name'] != 'nan') & (awaydf['position']=='GK')]
-                pname = st.selectbox('Select Player:', away_gk_df.name.unique(), index=0, key='home_player_analysis')
+                pname = st.selectbox('Select a Goal-Keeper:', away_gk_df.name.unique(), index=None, key='home_player_analysis')
                 if st.session_state.home_player_analysis:
                     st.header(f'{pname} Prformance Dashboard')
                     generate_gk_dahsboard(f'{pname}', aftmb_tid)
@@ -3443,7 +3443,7 @@ if league and htn and atn:
                 
                 fig,ax=plt.subplots(figsize=(24,16), facecolor=bg_color)
                 
-                key_stats_time_phase = st.radio("", ['Full Time', 'First Half', 'Second Half'], index=0)
+                key_stats_time_phase = st.radio("", ['Full Time', 'First Half', 'Second Half'], index=0, key='key_stats_radio')
                 if key_stats_time_phase=='Full Time':
                     key_stats(ax, 'Full Time')
                 if key_stats_time_phase=='First Half':
@@ -3606,7 +3606,7 @@ if league and htn and atn:
                 
                 fig,ax=plt.subplots(figsize=(10,15), facecolor=bg_color)
                 
-                shooting_stats_time_phase = st.radio("", ['Full Time', 'First Half', 'Second Half'], index=0)
+                shooting_stats_time_phase = st.radio("", ['Full Time', 'First Half', 'Second Half'], index=0, key='shooting_stats_radio')
                 if shooting_stats_time_phase=='Full Time':
                     plot_shooting_stats(ax, 'Full Time')
                 if shooting_stats_time_phase=='First Half':
@@ -3852,7 +3852,7 @@ if league and htn and atn:
                 
                 fig,ax=plt.subplots(figsize=(10,18), facecolor=bg_color)
                 
-                passing_stats_time_phase = st.radio("", ['Full Time', 'First Half', 'Second Half'], index=0)
+                passing_stats_time_phase = st.radio("", ['Full Time', 'First Half', 'Second Half'], index=0, key='passing_stats_radio')
                 if passing_stats_time_phase=='Full Time':
                     plot_passing_stats(ax, 'Full Time')
                 if passing_stats_time_phase=='First Half':
@@ -4048,7 +4048,7 @@ if league and htn and atn:
                 
                 fig,ax=plt.subplots(figsize=(10,11), facecolor=bg_color)
                 
-                defending_stats_time_phase = st.radio("", ['Full Time', 'First Half', 'Second Half'], index=0)
+                defending_stats_time_phase = st.radio("", ['Full Time', 'First Half', 'Second Half'], index=0, key='defending_stats_radio')
                 if defending_stats_time_phase=='Full Time':
                     plot_defending_stats(ax, 'Full Time')
                 if defending_stats_time_phase=='First Half':
@@ -4171,7 +4171,7 @@ if league and htn and atn:
                 
                 fig,ax=plt.subplots(figsize=(10,11), facecolor=bg_color)
                 
-                other_stats_time_phase = st.radio("", ['Full Time', 'First Half', 'Second Half'], index=0)
+                other_stats_time_phase = st.radio("", ['Full Time', 'First Half', 'Second Half'], index=0, key='other_stats_radio')
                 if other_stats_time_phase=='Full Time':
                     plot_other_stats(ax, 'Full Time')
                 if other_stats_time_phase=='First Half':
@@ -4193,7 +4193,7 @@ if league and htn and atn:
                 st.pyplot(fig)
                 
         with tab4:
-            top_type = st.selectbox('Type', ['Top Ball Progressors', 'Top Shot Sequences Involvements', 'Top Defensive Involvements', 'Top Threat Creating Players'], index=0)
+            top_type = st.selectbox('Select Type', ['Top Ball Progressors', 'Top Shot Sequences Involvements', 'Top Defensive Involvements', 'Top Threat Creating Players'], index=None, key='top_players_selection')
             
             def top_dfs():
                 # Get unique players
