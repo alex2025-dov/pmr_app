@@ -69,7 +69,6 @@ if league and htn and atn:
         @st.cache_data
         def get_event_data(league, htn, atn):
             # Construct the file path
-            # match_html_path = f"https://raw.githubusercontent.com/adnaaan433/First-App/refs/heads/main/MatchEventData/{league}/GW{gm_wk}/{htn}_vs_{atn}.html"
             match_html_path = f"https://raw.githubusercontent.com/adnaaan433/git_d4t4_p/refs/heads/main/{league}/{htn}_vs_{atn}.html"
             match_html_path = match_html_path.replace(' ', '%20')
             
@@ -4519,7 +4518,7 @@ if league and htn and atn:
             
         
     else:
-        st.write(' ')
+        st.write('Click Confirm button')
 
 else:
     st.write('Please Input a valid match info from Left Pannel')
