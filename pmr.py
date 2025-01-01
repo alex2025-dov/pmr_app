@@ -71,7 +71,7 @@ if league and htn and atn:
         match_input = st.sidebar.button('Confirm Selections', on_click=lambda: st.session_state.update({'confirmed': True}))
     except:
         st.session_state['confirmed'] = False
-        st.sidebar.write('Invalid Match. It seems the Home and Away Teams might have been selected in reverse. Please double-check your selections')
+        st.sidebar.write('Match not found. Maybe the Home and Away Teams might have been selected in reverse. Or Maybe the match data is not uploaded yet.')
     
     if st.session_state.confirmed:
         @st.cache_data
