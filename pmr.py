@@ -70,6 +70,7 @@ if league and htn and atn:
         # Only show the button if the response is successful
         match_input = st.sidebar.button('Confirm Selections', on_click=lambda: st.session_state.update({'confirmed': True}))
     except:
+        st.session_state['confirmed'] = False
         st.sidebar.write('Invalid Match. It seems the Home and Away Teams might have been selected in reverse. Please double-check your selections')
     
     if st.session_state.confirmed:
@@ -612,6 +613,7 @@ if league and htn and atn:
                     
                 fig_text(0.5, 1.05, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=30, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 1.01, 'Passing Network', fontsize=20, ha='center', va='center')
+                fig.text(0.5, 0.97, '@adnaaan433', fontsize=10, ha='center', va='center')
                 
                 fig.text(0.5, 0.05, '*Circles = Starter Players, Box = Substituted On Players, Numbers inside = Jersey Numbers of the Players', fontsize=10, fontstyle='italic', ha='center', va='center')
                 fig.text(0.5, 0.03, '*Width & Brightness of the Lines represent the amount of Successful Open-Play Passes between the Players', fontsize=10, fontstyle='italic', ha='center', va='center')
@@ -766,6 +768,7 @@ if league and htn and atn:
                     
                 fig_text(0.5, 1.05, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=30, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 1.01, 'Defensive Actions Heatmap', fontsize=20, ha='center', va='center')
+                fig.text(0.5, 0.97, '@adnaaan433', fontsize=10, ha='center', va='center')
                 
                 fig.text(0.5, 0.05, '*Circles = Starter Players, Box = Substituted On Players, Numbers inside = Jersey Numbers of the Players', fontsize=10, fontstyle='italic', ha='center', va='center')
                 fig.text(0.5, 0.03, '*Size of the Circles/Boxes represent the amount of the Total Defensive Actions of the Outfield Players', fontsize=10, fontstyle='italic', ha='center', va='center')
@@ -900,6 +903,7 @@ if league and htn and atn:
                     
                 fig_text(0.5, 1.05, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=30, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 1.01, 'Progressive Passes', fontsize=20, ha='center', va='center')
+                fig.text(0.5, 0.97, '@adnaaan433', fontsize=10, ha='center', va='center')
                 
                 fig.text(0.5, 0.02, '*Progressive Passes : Open-Play Successful Passes that move the ball at least 10 yards towards the Opponent Goal Center', fontsize=10, fontstyle='italic', ha='center', va='center')
                 fig.text(0.5, 0.00, '*Excluding the passes started from Own Defensive Third of the Pitch', fontsize=10, fontstyle='italic', ha='center', va='center')
@@ -1035,6 +1039,7 @@ if league and htn and atn:
                 
                 fig_text(0.5, 1.05, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=30, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 1.01, 'Progressive Passes', fontsize=20, ha='center', va='center')
+                fig.text(0.5, 0.97, '@adnaaan433', fontsize=10, ha='center', va='center')
                 
                 fig.text(0.5, 0.02, '*Progressive Carry : Carries that move the ball at least 10 yards towards the Opponent Goal Center', fontsize=10, fontstyle='italic', ha='center', va='center')
                 fig.text(0.5, 0.00, '*Excluding the carries ended at the Own Defensive Third of the Pitch', fontsize=10, fontstyle='italic', ha='center', va='center')
@@ -1181,6 +1186,7 @@ if league and htn and atn:
                 
                 fig_text(0.5, 1.05, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=30, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 1.01, 'Shots Map', fontsize=20, ha='center', va='center')
+                fig.text(0.5, 0.97, '@adnaaan433', fontsize=10, ha='center', va='center')
                 
                 fig.text(0.5, 0.08, '*Bigger shape means shots from Big Chances', fontsize=10, fontstyle='italic', ha='center', va='center')
                 
@@ -1294,7 +1300,7 @@ if league and htn and atn:
                 
                 fig_text(0.5, 0.94, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=30, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 0.89, 'GoalKeeper Saves', fontsize=20, ha='center', va='center')
-                fig.text(0.5, 0.84, 'X: @adnaaan433', fontsize=10, ha='center', va='center')
+                fig.text(0.5, 0.84, '@adnaaan433', fontsize=10, ha='center', va='center')
                 
                 fig.text(0.5, 0.2, '*Bigger circle means shots from Big Chances', fontsize=10, fontstyle='italic', ha='center', va='center')
                 
@@ -1389,6 +1395,7 @@ if league and htn and atn:
                 
                 fig_text(0.5, 1.1, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=40, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 1.04, 'Match Momentum', fontsize=30, ha='center', va='center')
+                fig.text(0.5, 0.98, '@adnaaan433', fontsize=15, ha='center', va='center')
                 
                 fig.text(0.5, -0.01, '*Momentum is the measure of the Avg. Open-Play Attacking Threat of a team per minute', fontsize=15, fontstyle='italic', ha='center', va='center')
                 fig.text(0.5, -0.05, '*green circle: Goals, orange circle: own goal', fontsize=15, fontstyle='italic', ha='center', va='center')
@@ -1476,6 +1483,7 @@ if league and htn and atn:
                 
                 fig_text(0.5, 1.1, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=40, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 1.04, 'Cumulative Expected Threat (CxT)', fontsize=30, ha='center', va='center')
+                fig.text(0.5, 0.98, '@adnaaan433', fontsize=15, ha='center', va='center')
                 
                 fig.text(0.5, -0.01, '*Cumulative xT is the sum of the consecutive xT from Open-Play Pass and Carries', fontsize=15, fontstyle='italic', ha='center', va='center')
                 
@@ -1576,6 +1584,7 @@ if league and htn and atn:
                 
                 fig_text(0.5, 1.05, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=30, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 1.01, 'Passes into Zone14 and Half-Spaces', fontsize=20, ha='center', va='center')
+                fig.text(0.5, 0.97, '@adnaaan433', fontsize=10, ha='center', va='center')
                 
                 fig.text(0.5, 0.1, '*Open-Play Successful Passes which ended inside Zone14 and Half-Spaces area', fontsize=10, fontstyle='italic', ha='center', va='center')
                 
@@ -1682,7 +1691,7 @@ if league and htn and atn:
                 
                 fig_text(0.5, 1.03, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=30, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 0.99, 'Passes from Zone14 and Half-Spaces', fontsize=20, ha='center', va='center')
-                fig.text(0.5, 0.95, 'X: @adnaaan433', fontsize=10, ha='center', va='center')
+                fig.text(0.5, 0.95, '@adnaaan433', fontsize=10, ha='center', va='center')
                 
                 fig.text(0.5, 0.1, '*Open-Play Successful Passes which initiated inside Zone14 and Half-Spaces area', fontsize=10, fontstyle='italic', ha='center', va='center')
                 
@@ -1766,6 +1775,7 @@ if league and htn and atn:
                 
                 fig_text(0.5, 1.05, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=30, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 1.01, 'Final Third Entries', fontsize=20, ha='center', va='center')
+                fig.text(0.5, 0.97, '@adnaaan433', fontsize=10, ha='center', va='center')
                 
                 fig.text(0.5, 0.05, '*Open-Play Successful Passes & Carries which ended inside the Final third, starting from outside the Final third', fontsize=10, 
                          fontstyle='italic', ha='center', va='center')
@@ -1862,6 +1872,7 @@ if league and htn and atn:
                 
                 fig_text(0.5, 1.08, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=30, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 1.01, "Opponent's Penalty Box Entries", fontsize=20, ha='center', va='center')
+                fig.text(0.5, 0.96, '@adnaaan433', fontsize=10, ha='center', va='center')
                 
                 fig.text(0.5, 0.00, '*Open-Play Successful Passes & Carries which ended inside the Opponent Penalty Box, starting from outside the Penalty Box', fontsize=10, 
                          fontstyle='italic', ha='center', va='center')
@@ -2045,6 +2056,7 @@ if league and htn and atn:
                 
                 fig_text(0.5, 1.05, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=30, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 1.01, 'High Turnovers', fontsize=20, ha='center', va='center')
+                fig.text(0.5, 0.97, '@adnaaan433', fontsize=10, ha='center', va='center')
                 
                 fig.text(0.5, 0.05, '*High Turnovers means winning possession within the 40m radius from the Opponent Goal Center', fontsize=10, 
                          fontstyle='italic', ha='center', va='center')
@@ -2148,6 +2160,7 @@ if league and htn and atn:
                 fig_text(0.5, 1.05, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=30, 
                          fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 1.01, 'Chances Creating Zones', fontsize=20, ha='center', va='center')
+                fig.text(0.5, 0.97, '@adnaaan433', fontsize=10, ha='center', va='center')
                 
                 himage = urlopen(f"https://images.fotmob.com/image_resources/logo/teamlogo/{hftmb_tid}.png")
                 himage = Image.open(himage)
@@ -2271,6 +2284,7 @@ if league and htn and atn:
                 
                 fig_text(0.5, 0.89, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=30, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 0.85, 'Open-Play Crosses', fontsize=20, ha='center', va='center')
+                fig.text(0.5, 0.81, '@adnaaan433', fontsize=10, ha='center', va='center')
                 
                 fig.text(0.5, 0.1, '*Violet Arrow = KeyPass from Cross | Green Arrow = Assist from Cross', fontsize=10, fontstyle='italic', ha='center', va='center')
                 
@@ -2389,6 +2403,7 @@ if league and htn and atn:
                 
                 fig_text(0.5, 0.92, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=22, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 0.88, "Team's Dominating Zone", fontsize=16, ha='center', va='center')
+                fig.text(0.5, 0.18, '@adnaaan433', fontsize=10, ha='center', va='center')
                 
                 fig.text(0.5, 0.13, '*Dominating Zone means where the team had more than 55% Open-Play touches than the Opponent', fontstyle='italic', fontsize=7, ha='center', va='center')
                 fig.text(0.5, 0.11, '*Contested means where the team had 45-55% Open-Play touches than the Opponent, where less than 45% there Opponent was dominant', fontstyle='italic', fontsize=7, ha='center', va='center')
@@ -2445,6 +2460,7 @@ if league and htn and atn:
                 
                 fig_text(0.5, 1.05, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=30, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 1.01, 'Pass Target Zones', fontsize=20, ha='center', va='center')
+                fig.text(0.5, 0.97, '@adnaaan433', fontsize=10, ha='center', va='center')
                 
                 himage = urlopen(f"https://images.fotmob.com/image_resources/logo/teamlogo/{hftmb_tid}.png")
                 himage = Image.open(himage)
@@ -2495,6 +2511,7 @@ if league and htn and atn:
                     
                 fig_text(0.5, 1.05, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=30, fontweight='bold', ha='center', va='center', ax=fig)
                 fig.text(0.5, 1.01, 'Successful Pass Ending Zones', fontsize=20, ha='center', va='center')  
+                fig.text(0.5, 0.97, '@adnaaan433', fontsize=10, ha='center', va='center')
                 
                 himage = urlopen(f"https://images.fotmob.com/image_resources/logo/teamlogo/{hftmb_tid}.png")
                 himage = Image.open(himage)
@@ -2856,6 +2873,7 @@ if league and htn and atn:
                 fig.text(0.21, 1.02, f'{pname}', fontsize=50, fontweight='bold', ha='left', va='center')
                 fig.text(0.21, 0.97, f'in {hteamName} {hgoal_count} - {agoal_count} {ateamName}  |  Minutes played: {mins_played}', 
                          fontsize=30, ha='left', va='center')
+                fig.text(0.87, 0.995, '@adnaaan433', fontsize=20, ha='right', va='center')
             
                 himage = urlopen(f"https://images.fotmob.com/image_resources/logo/teamlogo/{ftmb_tid}.png")
                 himage = Image.open(himage)
@@ -2879,6 +2897,7 @@ if league and htn and atn:
                 fig.text(0.22, 0.98, f'{pname}', fontsize=40, fontweight='bold', ha='left', va='center')
                 fig.text(0.22, 0.94, f'in {hteamName} {hgoal_count} - {agoal_count} {ateamName}  |  Minutes played: {mins_played}', 
                          fontsize=25, ha='left', va='center')
+                fig.text(0.87, 0.995, '@adnaaan433', fontsize=15, ha='right', va='center')
             
                 himage = urlopen(f"https://images.fotmob.com/image_resources/logo/teamlogo/{ftmb_tid}.png")
                 himage = Image.open(himage)
@@ -4493,6 +4512,7 @@ if league and htn and atn:
                 
                 fig.text(0.35, 1.02, 'Top Ball Progressors', fontsize=75, fontweight='bold', ha='center', va='center')
                 fig.text(0.35, 0.97, f'in the match {hteamName} {hgoal_count} - {agoal_count} {ateamName}', color='#1a1a1a', fontsize=50, ha='center', va='center')  
+                fig.text(0.35, 0.94, '@adnaaan433', fontsize=25, ha='center', va='center')
                 
                 st.pyplot(fig)
                 
@@ -4502,6 +4522,7 @@ if league and htn and atn:
                 
                 fig.text(0.35, 1.02, 'Top Shot Sequence Involvements', fontsize=75, fontweight='bold', ha='center', va='center')
                 fig.text(0.35, 0.97, f'in the match {hteamName} {hgoal_count} - {agoal_count} {ateamName}', color='#1a1a1a', fontsize=50, ha='center', va='center')
+                fig.text(0.35, 0.94, '@adnaaan433', fontsize=25, ha='center', va='center')
                 
                 st.pyplot(fig)
                 
@@ -4510,7 +4531,8 @@ if league and htn and atn:
                 top_defender(ax)
                 
                 fig.text(0.35, 1.02, 'Top Defensive Involvements', fontsize=75, fontweight='bold', ha='center', va='center')
-                fig.text(0.35, 0.97, f'in the match {hteamName} {hgoal_count} - {agoal_count} {ateamName}', color='#1a1a1a', fontsize=50, ha='center', va='center')  
+                fig.text(0.35, 0.97, f'in the match {hteamName} {hgoal_count} - {agoal_count} {ateamName}', color='#1a1a1a', fontsize=50, ha='center', va='center') 
+                fig.text(0.35, 0.94, '@adnaaan433', fontsize=25, ha='center', va='center')
                 
                 st.pyplot(fig)
                 
@@ -4520,6 +4542,7 @@ if league and htn and atn:
                 
                 fig.text(0.35, 1.02, 'Top Threat Creating Players', fontsize=75, fontweight='bold', ha='center', va='center')
                 fig.text(0.35, 0.97, f'in the match {hteamName} {hgoal_count} - {agoal_count} {ateamName}', color='#1a1a1a', fontsize=50, ha='center', va='center')
+                fig.text(0.35, 0.94, '@adnaaan433', fontsize=25, ha='center', va='center')
                 
                 st.pyplot(fig)
             
