@@ -595,7 +595,7 @@ if league and htn and atn:
                     
                     return pass_btn
                         
-                pn_time_phase = st.pills("", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='pn_time_pill')
+                pn_time_phase = st.pills(" ", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='pn_time_pill')
                 
                 if pn_time_phase=='Full Time':
                     fig, axs = plt.subplots(1,2, figsize=(15, 10), facecolor=bg_color)
@@ -748,7 +748,7 @@ if league and htn and atn:
                         ax.text(73, avgph, f'Avg. Def. Action\nHeight: {avgph:.2f}m', color='gray', rotation=-90, ha='right', va='center')
                     return df_def_show
                         
-                dah_time_phase = st.pills("", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='dah_time_pill')
+                dah_time_phase = st.pills(" ", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='dah_time_pill')
                 
                 if dah_time_phase == 'Full Time':
                     fig, axs = plt.subplots(1,2, figsize=(15, 10), facecolor=bg_color)
@@ -882,7 +882,7 @@ if league and htn and atn:
                      
                     return name_counts_df_show
                 
-                pp_time_phase = st.pills("", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='pp_time_pill')
+                pp_time_phase = st.pills(" ", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='pp_time_pill')
                 if pp_time_phase == 'Full Time':
                     fig, axs = plt.subplots(1,2, figsize=(15, 10), facecolor=bg_color)
                     home_prop = progressive_pass(axs[0], hteamName, hcol, 'Full Time')
@@ -1017,7 +1017,7 @@ if league and htn and atn:
                      
                     return name_counts_df_show
                 
-                pc_time_phase = st.pills("", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='pc_time_pill')
+                pc_time_phase = st.pills(" ", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='pc_time_pill')
                 if pc_time_phase == 'Full Time':
                     fig, axs = plt.subplots(1,2, figsize=(15, 10), facecolor=bg_color)
                     home_proc = progressive_carry(axs[0], hteamName, hcol, 'Full Time')
@@ -1163,7 +1163,7 @@ if league and htn and atn:
                     return player_stats_df
                 
                 
-                sm_time_phase = st.pills("", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='sm_time_pill')
+                sm_time_phase = st.pills(" ", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='sm_time_pill')
                 if sm_time_phase == 'Full Time':
                     fig, axs = plt.subplots(1,2, figsize=(15, 10), facecolor=bg_color)
                     home_shots_stats = plot_ShotsMap(axs[0], hteamName, hcol, 'Full Time')
@@ -1276,7 +1276,7 @@ if league and htn and atn:
                 
                     return
                 
-                gp_time_phase = st.pills("", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='gp_time_pill' )
+                gp_time_phase = st.pills(" ", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='gp_time_pill' )
                 if gp_time_phase == 'Full Time':
                     fig, axs = plt.subplots(1,2, figsize=(15, 10), facecolor=bg_color)
                     home_shots_stats = plot_goal_post(axs[0], hteamName, hcol, 'Full Time')
@@ -1563,7 +1563,7 @@ if league and htn and atn:
                     return stats
                 
                 fig, axs = plt.subplots(1,2, figsize=(15, 10), facecolor=bg_color)
-                zhsi_time_phase = st.pills("", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='Into')
+                zhsi_time_phase = st.pills(" ", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='Into')
                 if zhsi_time_phase=='Full Time':
                     home_z14hsi_stats = plot_zone14i(axs[0], hteamName, hcol, 'Full Time')
                     away_z14hsi_stats = plot_zone14i(axs[1], ateamName, acol, 'Full Time')
@@ -1669,7 +1669,7 @@ if league and htn and atn:
                     return stats
                 
                 fig, axs = plt.subplots(1,2, figsize=(15, 10), facecolor=bg_color)
-                zhsf_time_phase = st.pills("", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='From')
+                zhsf_time_phase = st.pills(" ", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='From')
                 if zhsf_time_phase=='Full Time':
                     home_z14hsf_stats = plot_zone14f(axs[0], hteamName, hcol, 'Full Time')
                     away_z14hsf_stats = plot_zone14f(axs[1], ateamName, acol, 'Full Time')
@@ -1753,7 +1753,7 @@ if league and htn and atn:
                     return stats
                 
                 fig, axs = plt.subplots(1,2, figsize=(15, 10), facecolor=bg_color)
-                fthE_time_phase = st.pills("", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='fthE_time_pill')
+                fthE_time_phase = st.pills(" ", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='fthE_time_pill')
                 if fthE_time_phase == 'Full Time':
                     home_fthirdE_stats = final_third_entry(axs[0], hteamName, hcol, 'Full Time')
                     away_fthirdE_stats = final_third_entry(axs[1], ateamName, acol, 'Full Time')
@@ -1849,7 +1849,7 @@ if league and htn and atn:
                     return stats
                 
                 fig, axs = plt.subplots(1,2, figsize=(15, 6), facecolor=bg_color)
-                bent_time_phase = st.pills("", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='bent_time_pill')
+                bent_time_phase = st.pills(" ", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='bent_time_pill')
                 if bent_time_phase == 'Full Time':
                     home_boxE_stats = penalty_box_entry(axs[0], hteamName, hcol, 'Full Time')
                     away_boxE_stats = penalty_box_entry(axs[1], ateamName, acol, 'Full Time')
@@ -2032,7 +2032,7 @@ if league and htn and atn:
                     return player_hto_stats, player_blost_stats
                 
                 fig, axs = plt.subplots(1,2, figsize=(15, 10), facecolor=bg_color)
-                hto_time_phase = st.pills("", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='hto_time_pill')
+                hto_time_phase = st.pills(" ", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='hto_time_pill')
                 if hto_time_phase == 'Full Time':
                     home_hto_stats, home_blost_stats = plot_high_turnover(axs[0], hteamName, hcol, 'Full Time')
                     away_hto_stats, away_blost_stats = plot_high_turnover(axs[1], ateamName, acol, 'Full Time')
@@ -2134,7 +2134,7 @@ if league and htn and atn:
                     return player_cc_stats
                 
                 fig, axs = plt.subplots(1,2, figsize=(15, 10), facecolor=bg_color)
-                cc_time_phase = st.pills("", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='cc_time_pill')
+                cc_time_phase = st.pills(" ", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='cc_time_pill')
                 if cc_time_phase == 'Full Time':
                     home_cc_stats = plot_cc_zone(axs[0], hteamName, hcol, 'Full Time')
                     away_cc_stats = plot_cc_zone(axs[1], ateamName, acol, 'Full Time')
@@ -2258,7 +2258,7 @@ if league and htn and atn:
                     return player_crs_stats
                 
                 fig, axs = plt.subplots(1,2, figsize=(15, 10), facecolor=bg_color)
-                crs_time_phase = st.pills("", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='crs_time_pill')
+                crs_time_phase = st.pills(" ", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='crs_time_pill')
                 if crs_time_phase == 'Full Time':
                     home_crs_stats = plot_crossed(axs[0], hteamName, hcol, 'Full Time')
                     away_crs_stats = plot_crossed(axs[1], ateamName, acol, 'Full Time')
@@ -2379,7 +2379,7 @@ if league and htn and atn:
                     return
                 
                 fig,ax=plt.subplots(figsize=(10,10), facecolor=bg_color)
-                tdz_time_phase = st.pills("", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='tdz_time_pill')
+                tdz_time_phase = st.pills(" ", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='tdz_time_pill')
                 if tdz_time_phase == 'Full Time':
                     plot_congestion(ax, 'Full Time')
                 if tdz_time_phase == 'First Half':
@@ -2432,7 +2432,7 @@ if league and htn and atn:
                     return
                 
                 fig, axs = plt.subplots(1,2, figsize=(15, 10), facecolor=bg_color)
-                ptz_time_phase = st.pills("", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='overall')
+                ptz_time_phase = st.pills(" ", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='overall')
                 if ptz_time_phase == 'Full Time':
                     home_cc_stats = pass_target_zone(axs[0], hteamName, hcol, 'Full Time')
                     away_cc_stats = pass_target_zone(axs[1], ateamName, acol, 'Full Time')
@@ -2482,7 +2482,7 @@ if league and htn and atn:
                     return
                 
                 fig, axs = plt.subplots(1,2, figsize=(15, 10), facecolor=bg_color)
-                sptz_time_phase = st.pills("", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='successful_only')
+                sptz_time_phase = st.pills(" ", ['Full Time', 'First Half', 'Second Half'], default='Full Time', key='successful_only')
                 if sptz_time_phase == 'Full Time':
                     home_cc_stats = succ_pass_target_zone(axs[0], hteamName, hcol, 'Full Time')
                     away_cc_stats = succ_pass_target_zone(axs[1], ateamName, acol, 'Full Time')
@@ -2507,7 +2507,7 @@ if league and htn and atn:
                 st.pyplot(fig)
                 
         with tab2:
-            team_player = st.pills("", [f"{hteamName} Players", f"{ateamName} Players", f'{hteamName} GK', f'{ateamName} GK'], selection_mode='single', default=f"{hteamName} Players", key='selecting_team_for_player_analysis')
+            team_player = st.pills(" ", [f"{hteamName} Players", f"{ateamName} Players", f'{hteamName} GK', f'{ateamName} GK'], selection_mode='single', default=f"{hteamName} Players", key='selecting_team_for_player_analysis')
             def offensive_actions(ax, pname):
                 # Viz Dfs:
                 playerdf = df[df['name']==pname]
@@ -3229,7 +3229,7 @@ if league and htn and atn:
                     generate_gk_dahsboard(f'{pname}', aftmb_tid)
                     
         with tab3:
-            stats_type = st.pills("", ["Key Stats", "Shooting Stats", "Passing Stats", "Defensive Stats", "Other Stats"], selection_mode='single', default="Key Stats", key='selecting_stats_type')
+            stats_type = st.pills(" ", ["Key Stats", "Shooting Stats", "Passing Stats", "Defensive Stats", "Other Stats"], selection_mode='single', default="Key Stats", key='selecting_stats_type')
             if stats_type == "Key Stats":
                 
                 def key_stats(ax, phase_tag):
@@ -3443,7 +3443,7 @@ if league and htn and atn:
                 
                 fig,ax=plt.subplots(figsize=(24,16), facecolor=bg_color)
                 
-                key_stats_time_phase = st.radio("", ['Full Time', 'First Half', 'Second Half'], index=0, key='key_stats_radio')
+                key_stats_time_phase = st.radio(" ", ['Full Time', 'First Half', 'Second Half'], index=0, key='key_stats_radio')
                 if key_stats_time_phase=='Full Time':
                     key_stats(ax, 'Full Time')
                 if key_stats_time_phase=='First Half':
@@ -3606,7 +3606,7 @@ if league and htn and atn:
                 
                 fig,ax=plt.subplots(figsize=(10,15), facecolor=bg_color)
                 
-                shooting_stats_time_phase = st.radio("", ['Full Time', 'First Half', 'Second Half'], index=0, key='shooting_stats_radio')
+                shooting_stats_time_phase = st.radio(" ", ['Full Time', 'First Half', 'Second Half'], index=0, key='shooting_stats_radio')
                 if shooting_stats_time_phase=='Full Time':
                     plot_shooting_stats(ax, 'Full Time')
                 if shooting_stats_time_phase=='First Half':
@@ -3852,7 +3852,7 @@ if league and htn and atn:
                 
                 fig,ax=plt.subplots(figsize=(10,18), facecolor=bg_color)
                 
-                passing_stats_time_phase = st.radio("", ['Full Time', 'First Half', 'Second Half'], index=0, key='passing_stats_radio')
+                passing_stats_time_phase = st.radio(" ", ['Full Time', 'First Half', 'Second Half'], index=0, key='passing_stats_radio')
                 if passing_stats_time_phase=='Full Time':
                     plot_passing_stats(ax, 'Full Time')
                 if passing_stats_time_phase=='First Half':
@@ -4048,7 +4048,7 @@ if league and htn and atn:
                 
                 fig,ax=plt.subplots(figsize=(10,11), facecolor=bg_color)
                 
-                defending_stats_time_phase = st.radio("", ['Full Time', 'First Half', 'Second Half'], index=0, key='defending_stats_radio')
+                defending_stats_time_phase = st.radio(" ", ['Full Time', 'First Half', 'Second Half'], index=0, key='defending_stats_radio')
                 if defending_stats_time_phase=='Full Time':
                     plot_defending_stats(ax, 'Full Time')
                 if defending_stats_time_phase=='First Half':
@@ -4171,7 +4171,7 @@ if league and htn and atn:
                 
                 fig,ax=plt.subplots(figsize=(10,11), facecolor=bg_color)
                 
-                other_stats_time_phase = st.radio("", ['Full Time', 'First Half', 'Second Half'], index=0, key='other_stats_radio')
+                other_stats_time_phase = st.radio(" ", ['Full Time', 'First Half', 'Second Half'], index=0, key='other_stats_radio')
                 if other_stats_time_phase=='Full Time':
                     plot_other_stats(ax, 'Full Time')
                 if other_stats_time_phase=='First Half':
