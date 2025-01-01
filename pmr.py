@@ -62,8 +62,15 @@ if league:
         atn = st.sidebar.selectbox('Select Away Team Name', atn_options, key='away_team', index=None)
 
 if league and htn and atn:
-    # match_input = st.sidebar.button('Confirm Selections', key='confirmed_button')
-    match_input = st.sidebar.button('Confirm Selections', on_click=lambda: st.session_state.update({'confirmed': True}))
+    match_html_path = f"https://raw.githubusercontent.com/adnaaan433/git_d4t4_p/refs/heads/main/{league}/{htn}_vs_{atn}.html"
+    match_html_path = match_html_path.replace(' ', '%20')
+    try:
+        response = requests.get(match_html_path)
+        response.raise_for_status()  # Raise an error for invalid responses (e.g., 404, 500)
+        # Only show the button if the response is successful
+        match_input = st.sidebar.button('Confirm Selections', on_click=lambda: st.session_state.update({'confirmed': True}))
+    except:
+        st.sidebar.write('Invalid Match. Did you select the Home Team and Away Team in reverse?')
     
     if st.session_state.confirmed:
         @st.cache_data
