@@ -4548,7 +4548,7 @@ if league and htn and atn:
             
         
     else:
-        st.write('Click Confirm button')
+        st.write(' ')
 
 else:
     st.write('Please Input a valid match info from Left Pannel')
