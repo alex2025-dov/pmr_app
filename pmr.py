@@ -2713,13 +2713,10 @@ if league and htn and atn:
             
                 ax_text(34, 110, '<Touches> & <Pass Receiving> Points', fontsize=20, fontweight='bold', ha='center', va='center', 
                         highlight_textprops=[{'color':acol}, {'color':hcol}])
-                ax.text(34, -5, f'Total Touches: {len(actual_touch)}', color=acol, fontsize=13, ha='center', va='center')
-                ax.text(34, -9, f'Touches at the Final Third: {len(fthd_tch)}', color=acol, fontsize=13, ha='center', va='center')
-                ax.text(34, -13, f'Touches at the Penalty Box: {len(penbox_tch)}', color=acol, fontsize=13, ha='center', va='center')
-            
-                ax.text(34, -17, f'Total Passes Received: {len(pass_rec)}', color=hcol, fontsize=13, ha='center', va='center')
-                ax.text(34, -21, f'Passes Received at the Final Third: {len(fthd_rec)}', color=hcol, fontsize=13, ha='center', va='center')
-                ax.text(34, -25, f'Passes Received at the Penalty Box: {len(penbox_rec)}', color=hcol, fontsize=13, ha='center', va='center')
+                ax.text(34, -5, f'Total Touches: {len(actual_touch)} | at Final Third: {len(fthd_tch)} | at Penalty Box: {len(penbox_tch)}', color=acol, fontsize=13, ha='center', va='center')
+                ax.text(34, -9, f'Total Pass Received: {len(pass_rec)} | at Final Third: {len(fthd_rec)} | at Penalty Box: {len(penbox_rec)}', color=hcol, fontsize=13, ha='center', va='center')
+                ax.text(34, -17, '*blue area = middle 75% touches area', color=acol, fontsize=13, fontstyle='italic', ha='center', va='center')
+                ax.text(34, -21, '*red area = middle 75% pass receiving area', color=hcol, fontsize=13, fontstyle='italic', ha='center', va='center')
                 return
             
             def gk_passmap(ax, pname):
