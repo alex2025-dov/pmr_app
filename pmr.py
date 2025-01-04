@@ -4234,6 +4234,9 @@ if league and htn and atn:
                 progressor_df = progressor_df.head(10)
                 progressor_df['shortName'] = progressor_df['name'].apply(get_short_name)
                 
+                
+                
+                
                 # Top Threate Creators
                 # Initialize an empty dictionary to store home players different type of Carries counts
                 xT_counts = {'name': unique_players, 'xT from Pass': [], 'xT from Carry': [], 'team names': []}
@@ -4254,7 +4257,7 @@ if league and htn and atn:
                 
                 
                 # Shot Sequence Involvement
-                df_no_carry = df[df['type']!='Carry'].reset_index(drop=True)
+                df_no_carry = df[~df['type'].str.contains('Carry|TakeOn|Challenge')].reset_index(drop=True)
                 # Initialize an empty dictionary to store home players different type of shot sequence counts
                 shot_seq_counts = {'name': unique_players, 'Shots': [], 'Shot Assists': [], 'Buildup to Shot': [], 'team names': []}
                 # Putting counts in those lists
@@ -4263,7 +4266,7 @@ if league and htn and atn:
                     shot_seq_counts['Shots'].append(len(dfp[dfp['type'].isin(['MissedShots','SavedShot','ShotOnPost','Goal'])]))
                     shot_seq_counts['Shot Assists'].append(len(dfp[(dfp['qualifiers'].str.contains('KeyPass'))]))
                     shot_seq_counts['Buildup to Shot'].append(len(df_no_carry[(df_no_carry['type'] == 'Pass') & (df_no_carry['outcomeType']=='Successful') & 
-                                                                              (df_no_carry['shortName'] == name) &
+                                                                              (df_no_carry['name'] == name) &
                                                                               (df_no_carry['qualifiers'].shift(-1).str.contains('KeyPass'))]))
                     
                     shot_seq_counts['team names'].append(dfp['teamName'].max())
