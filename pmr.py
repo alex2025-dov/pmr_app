@@ -2854,6 +2854,14 @@ if league and htn and atn:
                     mins_played = int(max_min - df_sub_on['minute'].unique())
                 else:
                     mins_played = 0
+
+                dfred = df_player[(df_player['type']=='Card') & (df_player['qualifiers'].str.contains('SecondYellow|Red'))]
+                redmin = dfred['minute'].max()
+                if len(dfred) == 1:
+                    mins_played = mins_played - (90 - redmin)
+            
+                else:
+                    mins_played = mins_played
             
                 return int(mins_played)
             
