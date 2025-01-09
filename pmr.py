@@ -44,7 +44,7 @@ if 'confirmed' not in st.session_state:
     st.session_state.confirmed = False
     
 # Step 1: League selection
-league = st.sidebar.selectbox('Select a League', ['LaLiga 2024-25', 'Premier League 2024-25'], key='league', index=None)
+league = st.sidebar.selectbox('Select a League', ['LaLiga 2024-25', 'Premier League 2024-25', 'UEFA Champions League 2024-25'], key='league', index=None)
 
 # Step 3: Team selection
 if league == 'LaLiga 2024-25':
@@ -53,15 +53,28 @@ if league == 'LaLiga 2024-25':
 elif league == 'Premier League 2024-25':
     team_list = ['Arsenal', 'Aston Villa', 'Bournemouth', 'Brentford', 'Brighton', 'Chelsea', 'Crystal Palace', 'Everton', 'Fulham', 'Ipswich', 'Leicester', 'Liverpool', 'Manchester City', 'Manchester United', 'Newcastle',
                  'Nottingham Forest', 'Southampton', 'Tottenham', 'West Ham', 'Wolves']
+elif league == 'UEFA Champions League 2024-25':
+    team_list = ['AC Milan', 'Arsenal', 'Aston Villa', 'Atalanta', 'Atletico Madrid', 'BSC Young Boys', 'Barcelona', 'Bayer Leverkusen', 'Bayern Munich', 'Benfica', 'Bologna', 'Borussia Dortmund', 'Brest', 'Celtic',
+                 'Club Bruges', 'Dinamo Zagreb', 'FK Crvena Zvezda', 'Feyenoord', 'Girona', 'Inter', 'Juventus', 'Lille', 'Liverpool', 'Manchester City', 'Monaco', 'PSV Eindhoven', 'Paris Saint-Germain', 'RB Leipzig',
+                 'Real Madrid', 'Salzburg', 'Shakhtar Donetsk', 'Slovan Bratislava', 'Sparta Prague', 'Sporting CP', 'Sturm Graz', 'VfB Stuttgart']
 
-if league:
+if league and league != 'UEFA Champions League 2024-25':
     htn = st.sidebar.selectbox('Select Home Team', team_list, key='home_team', index=None)
     
     if htn:
         atn_options = [team for team in team_list if team != htn]
         atn = st.sidebar.selectbox('Select Away Team Name', atn_options, key='away_team', index=None)
+        
+if league == 'UEFA Champions League 2024-25':
+    stage = st.sidebar.selectbox('Select Stage', ['League Phase', 'Knockout Playoff', 'Round of 16', 'Quarter Final', 'Quarter Final', 'Final'], key='stage_selection', index=None)
+    if stage:
+        htn = st.sidebar.selectbox('Select Home Team', team_list, key='home_team', index=None)
+        
+        if htn:
+            atn_options = [team for team in team_list if team != htn]
+            atn = st.sidebar.selectbox('Select Away Team Name', atn_options, key='away_team', index=None)
 
-if league and htn and atn:
+if league and league != 'UEFA Champions League 2024-25' and htn and atn:
     match_html_path = f"https://raw.githubusercontent.com/adnaaan433/git_d4t4_p/refs/heads/main/{league}/{htn}_vs_{atn}.html"
     match_html_path = match_html_path.replace(' ', '%20')
     try:
@@ -71,7 +84,19 @@ if league and htn and atn:
         match_input = st.sidebar.button('Confirm Selections', on_click=lambda: st.session_state.update({'confirmed': True}))
     except:
         st.session_state['confirmed'] = False
-        st.sidebar.write('No Match Found')
+        st.sidebar.write('Match not found')
+        
+if league and league == 'UEFA Champions League 2024-25' and stage and htn and atn:
+    match_html_path = f"https://raw.githubusercontent.com/adnaaan433/UEFA_Competion/refs/heads/main/{league}/{stage}/{htn}_vs_{atn}.html"
+    match_html_path = match_html_path.replace(' ', '%20')
+    try:
+        response = requests.get(match_html_path)
+        response.raise_for_status()  # Raise an error for invalid responses (e.g., 404, 500)
+        # Only show the button if the response is successful
+        match_input = st.sidebar.button('Confirm Selections', on_click=lambda: st.session_state.update({'confirmed': True}))
+    except:
+        st.session_state['confirmed'] = False
+        st.sidebar.write('Match not found')
     
     if st.session_state.confirmed:
         @st.cache_data
