@@ -3191,7 +3191,7 @@ if league and league == 'UEFA Champions League 2024-25' and stage and htn and at
             
             if team_player == f"{hteamName} Players":
                 home_pname_df = homedf[(homedf['name'] != 'nan') & (homedf['position']!='GK')]
-                hpname = st.selectbox('Select a Player:', home_pname_df.name.unique(), index=None, key='home_player_analysis')
+                hpname = st.selectbox('Select a Player:', sorted(home_pname_df.name.unique()), index=None, key='home_player_analysis')
                 if st.session_state.home_player_analysis:
                     st.header(f'{hpname} Performance Dashboard')
                     generate_player_dahsboard(f'{hpname}', hftmb_tid)
@@ -3228,7 +3228,7 @@ if league and league == 'UEFA Champions League 2024-25' and stage and htn and at
                     
             if team_player == f"{ateamName} Players":
                 away_pname_df = awaydf[(awaydf['name'] != 'nan') & (awaydf['position']!='GK')]
-                apname = st.selectbox('Select a Player:', away_pname_df.name.unique(), index=None, key='away_player_analysis')
+                apname = st.selectbox('Select a Player:', sorted(away_pname_df.name.unique()), index=None, key='away_player_analysis')
                 if st.session_state.away_player_analysis:
                     st.header(f'{apname} Prformance Dashboard')
                     generate_player_dahsboard(f'{apname}', aftmb_tid)
