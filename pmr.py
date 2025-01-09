@@ -101,9 +101,6 @@ if league and league == 'UEFA Champions League 2024-25' and stage and htn and at
     if st.session_state.confirmed:
         @st.cache_data
         def get_event_data(league, htn, atn):
-            # Construct the file path
-            match_html_path = f"https://raw.githubusercontent.com/adnaaan433/git_d4t4_p/refs/heads/main/{league}/{htn}_vs_{atn}.html"
-            match_html_path = match_html_path.replace(' ', '%20')
             
             def extract_json_from_html(html_path, save_output=False):
                 response = requests.get(html_path)
