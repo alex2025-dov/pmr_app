@@ -2882,7 +2882,7 @@ if league and htn and atn and st.session_state.confirmed:
             
             # Case 1: Started the game and was not substituted off
             if df_player['isFirstEleven'].unique()[0] == 1 and len(df_sub_off) == 0:
-                mins_played = 90 + extra_time
+                mins_played = 90
         
             # Case 2: Started the game and was substituted off
             elif df_player['isFirstEleven'].unique()[0] == 1 and len(df_sub_off) == 1:
@@ -2900,11 +2900,10 @@ if league and htn and atn and st.session_state.confirmed:
                     mins_played = max_min - sub_on_min
         
             # Adjust for red cards
-            df_red = df_player[(df_player['type'] == 'Card') & 
-                               (df_player['qualifiers'].str.contains('SecondYellow|Red', na=False))]
+            df_red = df_player[(df_player['type'] == 'Card') & (df_player['qualifiers'].str.contains('SecondYellow|Red', na=False))]
             if len(df_red) == 1:
                 red_min = df_red['minute'].max()
-                mins_played = min(mins_played, red_min)
+                mins_played = mins_played - (90 - redmin)
         
             return int(mins_played)
         
