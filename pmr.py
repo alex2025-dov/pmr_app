@@ -1069,7 +1069,7 @@ if league and htn and atn and st.session_state.confirmed:
                 away_proc = progressive_carry(axs[1], ateamName, acol, 'Second Half')
             
             fig_text(0.5, 1.05, f'<{hteamName} {hgoal_count}> - <{agoal_count} {ateamName}>', highlight_textprops=[{'color':hcol}, {'color':acol}], fontsize=30, fontweight='bold', ha='center', va='center', ax=fig)
-            fig.text(0.5, 1.01, 'Progressive Passes', fontsize=20, ha='center', va='center')
+            fig.text(0.5, 1.01, 'Progressive Carries', fontsize=20, ha='center', va='center')
             fig.text(0.5, 0.97, '@adnaaan433', fontsize=10, ha='center', va='center')
             
             fig.text(0.5, 0.02, '*Progressive Carry : Carries that move the ball at least 10 yards towards the Opponent Goal Center', fontsize=10, fontstyle='italic', ha='center', va='center')
