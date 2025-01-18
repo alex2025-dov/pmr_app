@@ -3250,7 +3250,7 @@ if league and htn and atn and st.session_state.confirmed:
             away_pname_df = awaydf[(awaydf['name'] != 'nan') & (awaydf['position']!='GK')]
             apname = st.selectbox('Select a Player:', away_pname_df.name.unique(), index=None, key='away_player_analysis')
             if st.session_state.away_player_analysis:
-                st.header(f'{apname} Prformance Dashboard')
+                st.header(f'{apname} Performance Dashboard')
                 generate_player_dahsboard(f'{apname}', aftmb_tid)
                 
                 shooting_stats_dict, passing_stats_dict, carry_stats_dict, pass_receiving_stats_dict, defensive_stats_dict, other_stats_dict = player_detailed_data(apname)
@@ -3287,14 +3287,14 @@ if league and htn and atn and st.session_state.confirmed:
             home_gk_df = homedf[(homedf['name'] != 'nan') & (homedf['position']=='GK')]
             pname = st.selectbox('Select a Goal-Keeper:', home_gk_df.name.unique(), index=None, key='home_player_analysis')
             if st.session_state.home_player_analysis:
-                st.header(f'{pname} Prformance Dashboard')
+                st.header(f'{pname} Performance Dashboard')
                 generate_gk_dahsboard(f'{pname}', hftmb_tid)
                 
         if team_player == f'{ateamName} GK':
             away_gk_df = awaydf[(awaydf['name'] != 'nan') & (awaydf['position']=='GK')]
             pname = st.selectbox('Select a Goal-Keeper:', away_gk_df.name.unique(), index=None, key='home_player_analysis')
             if st.session_state.home_player_analysis:
-                st.header(f'{pname} Prformance Dashboard')
+                st.header(f'{pname} Performance Dashboard')
                 generate_gk_dahsboard(f'{pname}', aftmb_tid)
                 
     with tab3:
