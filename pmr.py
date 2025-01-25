@@ -2985,7 +2985,7 @@ if league and htn and atn and st.session_state.confirmed:
             pass_accuracy = round((len(accpass)/len(passdf))*100, 2) if len(passdf) != 0 else 0
             pro_pass = accpass[(accpass['prog_pass']>9.144) & (~accpass['qualifiers'].str.contains('Freekick|Corner')) & (accpass['x']>35)]
             cc = dfp[dfp['qualifiers'].str.contains('KeyPass')]
-            bcc = dfp[dfp['qualifiers'].str.contains('BigChance')]
+            bcc = dfp[dfp['qualifiers'].str.contains('BigChanceCreated')]
             ass = dfp[dfp['qualifiers'].str.contains('GoalAssist')]
             preas = df_filt[(df_filt['name']==pname) & (df_filt['type']=='Pass') & (df_filt['outcomeType']=='Successful') & (df_filt['qualifiers'].shift(-1).str.contains('GoalAssist'))]
             buildup_s = df_filt[(df_filt['name']==pname) & (df_filt['type']=='Pass') & (df_filt['outcomeType']=='Successful') & (df_filt['qualifiers'].shift(-1).str.contains('KeyPass'))]
