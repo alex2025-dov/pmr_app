@@ -4598,7 +4598,7 @@ if league and htn and atn and st.session_state.confirmed:
 
 else:
     st.title('Post Match Report')
-    st.text('Data from: Opta,   Made by: Adnan,   twitter: @adnaaan433')
+    st.text('Data source: Opta,   Made by: Adnan,   twitter: @adnaaan433')
     st.divider()
     
     st.write('Please Select a Match from the Left Panel and Click Confirm')
