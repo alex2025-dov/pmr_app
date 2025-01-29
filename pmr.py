@@ -35,9 +35,6 @@ col1 = '#ff4b44'
 col2 = '#00a0de'
 
 st.sidebar.title('Match Selection')
-st.title('Post Match Report')
-st.text('Data from: Opta,   Made by: Adnan,   twitter: @adnaaan433')
-st.divider()
     
 league = None
 stage = None
@@ -50,6 +47,7 @@ if 'confirmed' not in st.session_state:
     
 def reset_confirmed():
     st.session_state['confirmed'] = False
+    
     
     
 # Step 1: League selection
@@ -4599,7 +4597,13 @@ if league and htn and atn and st.session_state.confirmed:
         
 
 else:
-    st.write('Please Select a valid match info from Left Pannel and Click Confirm')
+    st.title('Post Match Report')
+    st.text('Data from: Opta,   Made by: Adnan,   twitter: @adnaaan433')
+    st.divider()
+    
+    st.write('Please Select a Match from the Left Panel and Click Confirm')
+    st.write('  ')
+    st.write('*Click the arrow at the top left corner if the Left Panel is not visible')
     
     
     
