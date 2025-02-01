@@ -1096,12 +1096,12 @@ if league and htn and atn and st.session_state.confirmed:
             st.header(f'{an_tp}')
             def plot_ShotsMap(ax, team_name, col, phase_tag):
                 if phase_tag == 'Full Time':
-                    shots_df = df[(df['teamName']==team_name) & (df['type'].isin(['Goal', 'MissedShots', 'SavedShot', 'ShotOnPost']))]
+                    shots_df = df[(df['teamName']==team_name) & (df['type'].isin(['Goal', 'MissedShots', 'SavedShot', 'ShotOnPost'])) & (~df['qualifiers'].str.contains('OwnGoal'))]
                 elif phase_tag == 'First Half':
-                    shots_df = df[(df['teamName']==team_name) & (df['type'].isin(['Goal', 'MissedShots', 'SavedShot', 'ShotOnPost'])) &
+                    shots_df = df[(df['teamName']==team_name) & (df['type'].isin(['Goal', 'MissedShots', 'SavedShot', 'ShotOnPost'])) & (~df['qualifiers'].str.contains('OwnGoal')) &
                                   (df['period']=='FirstHalf')]
                 elif phase_tag == 'Second Half':
-                    shots_df = df[(df['teamName']==team_name) & (df['type'].isin(['Goal', 'MissedShots', 'SavedShot', 'ShotOnPost'])) &
+                    shots_df = df[(df['teamName']==team_name) & (df['type'].isin(['Goal', 'MissedShots', 'SavedShot', 'ShotOnPost'])) & (~df['qualifiers'].str.contains('OwnGoal')) &
                                   (df['period']=='SecondHalf')]
             
                 goal = shots_df[(shots_df['type']=='Goal') & (~shots_df['qualifiers'].str.contains('BigChance')) & (~shots_df['qualifiers'].str.contains('OwnGoal'))]
@@ -2969,7 +2969,7 @@ if league and htn and atn and st.session_state.confirmed:
             big_cmis = big_c[big_c['type']!='Goal']
             op_shots = pshots[pshots['qualifiers'].str.contains('RegularPlay')]
             out_b = pshots[pshots['qualifiers'].str.contains('OutOfBox')]
-            og = pshots[pshots['qualifiers'].str.contains('OwnGoal')]
+            og = dfp[dfp['qualifiers'].str.contains('OwnGoal')]
             pen_t = pshots[pshots['qualifiers'].str.contains('Penalty')]
             pen_m = pen_t[pen_t['type']!='Goal']
             frk_shots = pshots[pshots['qualifiers'].str.contains('DirectFreekick')]
