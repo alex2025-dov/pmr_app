@@ -2901,7 +2901,7 @@ if league and htn and atn and st.session_state.confirmed:
             df_red = df_player[(df_player['type'] == 'Card') & (df_player['qualifiers'].str.contains('SecondYellow|Red', na=False))]
             if len(df_red) == 1:
                 red_min = df_red['minute'].max()
-                mins_played = mins_played - (90 - redmin)
+                mins_played = mins_played - (90 - red_min)
         
             return int(mins_played)
         
