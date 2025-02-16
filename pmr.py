@@ -24,6 +24,7 @@ from urllib.request import urlopen
 from unidecode import unidecode
 from scipy.spatial import ConvexHull
 import streamlit as st
+import os
 
 green = '#69f900'
 red = '#ff4b44'
@@ -4605,8 +4606,60 @@ else:
     st.write('  ')
     st.write('*Click the arrow at the top left corner if the Left Panel is not visible')
     
-    
-    
+
+
+# Space
+st.sidebar.text('')
+st.sidebar.text('')
+st.sidebar.text('')
+st.sidebar.text('')
+st.sidebar.text('')
+st.sidebar.text('')
+st.sidebar.text('')
+st.sidebar.text('')
+st.sidebar.text('')
+st.sidebar.text('')
+st.sidebar.text('')
+st.sidebar.text('')
+st.sidebar.text('')
+st.sidebar.text('')
+st.sidebar.text('')
+
+
+
+# File to store feedback
+FEEDBACK_FILE = "feedback.csv"
+
+# Function to load existing feedback
+def load_feedback():
+    if os.path.exists(FEEDBACK_FILE):
+        return pd.read_csv(FEEDBACK_FILE)
+    else:
+        return pd.DataFrame(columns=["Rating", "Feedback"])
+
+# Function to save feedback
+def save_feedback(rating, feedback_text):
+    df = load_feedback()
+    new_entry = pd.DataFrame([[rating+1, feedback_text]], columns=["Rating", "Feedback"])
+    df = pd.concat([df, new_entry], ignore_index=True)
+    df.to_csv(FEEDBACK_FILE, index=False)
+
+# Streamlit UI
+st.sidebar.header("Feedback Section")
+
+# Star rating using st.feedback()
+rating = st.sidebar.feedback("stars")  # Use "stars" as the correct option
+
+# Text feedback input
+feedback_text = st.sidebar.text_area("Leave your feedback here:")
+
+# Submit button
+if st.sidebar.button("Submit Feedback"):
+    if rating is not None and feedback_text.strip():
+        save_feedback(rating, feedback_text)  # Store rating (adjusted index)
+        st.sidebar.success("Thank you for your feedback!")
+    else:
+        st.sidebar.warning("Please select a rating and enter some feedback before submitting.")
     
     
     
