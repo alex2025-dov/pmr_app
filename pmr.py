@@ -4651,7 +4651,7 @@ st.sidebar.header("Feedback Section")
 rating = st.sidebar.feedback("stars")  # Use "stars" as the correct option
 
 # Text feedback input
-feedback_text = st.sidebar.text_area("Leave your feedback here:")
+feedback_text = st.sidebar.text_area("Leave your feedback here: What more features you want to see")
 
 # Submit button
 if st.sidebar.button("Submit Feedback"):
