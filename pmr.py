@@ -127,7 +127,7 @@ if season:
             st.sidebar.write('Match not found')
     
 if league and htn and atn and st.session_state.confirmed:
-    
+    # @st.cache_data
     def get_event_data(season, league, stage, htn, atn):
         
         def extract_json_from_html(html_path, save_output=False):
@@ -511,6 +511,7 @@ if league and htn and atn and st.session_state.confirmed:
     agoal_count = agoal_count + len(homedf[(homedf['teamName']==hteamName) & (homedf['type']=='Goal') & (homedf['qualifiers'].str.contains('OwnGoal'))])
     
     df_teamNameId = pd.read_csv('https://raw.githubusercontent.com/adnaaan433/pmr_app/refs/heads/main/teams_name_and_id.csv')
+    st.write(hteamName)
     hftmb_tid = df_teamNameId[df_teamNameId['teamName']==hteamName].teamId.to_list()[0]
     aftmb_tid = df_teamNameId[df_teamNameId['teamName']==ateamName].teamId.to_list()[0]
     
