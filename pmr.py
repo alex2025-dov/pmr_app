@@ -127,8 +127,8 @@ if season:
             st.sidebar.write('Match not found')
     
 if league and htn and atn and st.session_state.confirmed:
-    
-    def get_event_data(league, htn, atn):
+    @st.cache_data
+    def get_event_data(season, league, stage, htn, atn):
         
         def extract_json_from_html(html_path, save_output=False):
             response = requests.get(html_path)
@@ -480,7 +480,7 @@ if league and htn and atn and st.session_state.confirmed:
         df = df.reset_index(drop=True)
         return df, teams_dict, players_df
     
-    df, teams_dict, players_df = get_event_data(league, htn, atn)
+    df, teams_dict, players_df = get_event_data(season, league, stage, htn, atn)
     
     def get_short_name(full_name):
         if pd.isna(full_name):
