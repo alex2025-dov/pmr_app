@@ -59,7 +59,7 @@ if season == '2023-24':
 
     if league == 'La Liga':
         team_list = ['Athletic Club', 'Atletico Madrid', 'Barcelona', 'Celta Vigo', 'Deportivo Alaves', 'Getafe', 'Girona', 'Las Palmas', 'Mallorca', 'Osasuna', 'Rayo Vallecano', 'Real Betis', 
-                     'Real Madrid', 'Real Sociedad', 'Sevilla', 'Valencia', 'Villarreal', 'fCadiz', 'Almeria', 'Granada']
+                     'Real Madrid', 'Real Sociedad', 'Sevilla', 'Valencia', 'Villarreal', 'Cadiz', 'Almeria', 'Granada']
     elif league == 'Premier League':
         team_list = ['Arsenal', 'Aston Villa', 'Bournemouth', 'Brentford', 'Brighton', 'Chelsea', 'Crystal Palace', 'Everton', 'Fulham', 'Liverpool', 'Manchester City', 'Manchester United', 'Newcastle',
                      'Nottingham Forest', 'Tottenham', 'West Ham', 'Wolves', 'Luton', 'Burnley', 'Sheffield United']
@@ -163,7 +163,7 @@ if season == '2024-25':
             st.session_state['confirmed'] = False
             st.sidebar.write('Match not found')
     
-if league and htn and atn and st.session_state.confirmed:
+if season and league and htn and atn and st.session_state.confirmed:
     @st.cache_data
     def get_event_data(season, league, stage, htn, atn):
         
@@ -547,12 +547,14 @@ if league and htn and atn and st.session_state.confirmed:
     hgoal_count = hgoal_count + len(awaydf[(awaydf['teamName']==ateamName) & (awaydf['type']=='Goal') & (awaydf['qualifiers'].str.contains('OwnGoal'))])
     agoal_count = agoal_count + len(homedf[(homedf['teamName']==hteamName) & (homedf['type']=='Goal') & (homedf['qualifiers'].str.contains('OwnGoal'))])
     
+    st.header(f'{hteamName} {hgoal_count} - {agoal_count} {ateamName}')
+    st.text(f'{league}, {season} season')
+    
     df_teamNameId = pd.read_csv('https://raw.githubusercontent.com/adnaaan433/pmr_app/refs/heads/main/teams_name_and_id.csv')
     hftmb_tid = df_teamNameId[df_teamNameId['teamName']==hteamName].teamId.to_list()[0]
     aftmb_tid = df_teamNameId[df_teamNameId['teamName']==ateamName].teamId.to_list()[0]
     
-    st.header(f'{hteamName} {hgoal_count} - {agoal_count} {ateamName}')
-    st.text(f'{league}')
+    
     
     tab1, tab2, tab3, tab4 = st.tabs(['Team Analysis', 'Player Analysis', 'Match Statistics', 'Top Players'])
     
