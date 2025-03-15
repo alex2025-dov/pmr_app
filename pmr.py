@@ -64,6 +64,29 @@ if season == '2023-24':
         team_list = ['Arsenal', 'Aston Villa', 'Bournemouth', 'Brentford', 'Brighton', 'Chelsea', 'Crystal Palace', 'Everton', 'Fulham', 'Liverpool', 'Manchester City', 'Manchester United', 'Newcastle',
                      'Nottingham Forest', 'Tottenham', 'West Ham', 'Wolves', 'Luton', 'Burnley', 'Sheffield United']
         
+    if league:
+        htn = st.sidebar.selectbox('Select Home Team', team_list, key='home_team', index=None, on_change=reset_confirmed)
+        
+        if htn:
+            atn_options = [team for team in team_list if team != htn]
+            atn = st.sidebar.selectbox('Select Away Team Name', atn_options, key='away_team', index=None, on_change=reset_confirmed)
+            
+    if league and htn and atn:
+        season = season.replace('-', '_')
+        league = league.replace(' ', '_')
+        match_html_path = f"https://raw.githubusercontent.com/adnaaan433/{season}_{league}/refs/heads/main/{htn}_vs_{atn}.html"
+        match_html_path = match_html_path.replace(' ', '%20')
+        try:
+            response = requests.get(match_html_path)
+            response.raise_for_status()  # Raise an error for invalid responses (e.g., 404, 500)
+            # Only show the button if the response is successful
+            match_input = st.sidebar.button('Confirm Selections', on_click=lambda: st.session_state.update({'confirmed': True}))
+        except:
+            st.session_state['confirmed'] = False
+            st.sidebar.write('Match not found')
+            
+        
+        
 if season == '2024-25':
     league = st.sidebar.selectbox('Select a League', ['La Liga', 'Premier League', 'Serie A', 'UEFA Champions League'], key='league', index=None, on_change=reset_confirmed)
 
