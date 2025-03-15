@@ -52,8 +52,19 @@ def reset_confirmed():
     
     
    
-season = st.sidebar.selectbox('Select a season:', ['2024_25'], key='season', index=0, on_change=reset_confirmed)
-if season:
+season = st.sidebar.selectbox('Select a season:', ['2023-24', '2024-25'], key='season', index=None, on_change=reset_confirmed)
+if season == '2023-24':
+    league = st.sidebar.selectbox('Select a League', ['La Liga', 'Premier League'], key='league', index=None, on_change=reset_confirmed)
+
+
+    if league == 'La Liga':
+        team_list = ['Athletic Club', 'Atletico Madrid', 'Barcelona', 'Celta Vigo', 'Deportivo Alaves', 'Getafe', 'Girona', 'Las Palmas', 'Mallorca', 'Osasuna', 'Rayo Vallecano', 'Real Betis', 
+                     'Real Madrid', 'Real Sociedad', 'Sevilla', 'Valencia', 'Villarreal', 'fCadiz', 'Almeria', 'Granada']
+    elif league == 'Premier League':
+        team_list = ['Arsenal', 'Aston Villa', 'Bournemouth', 'Brentford', 'Brighton', 'Chelsea', 'Crystal Palace', 'Everton', 'Fulham', 'Liverpool', 'Manchester City', 'Manchester United', 'Newcastle',
+                     'Nottingham Forest', 'Tottenham', 'West Ham', 'Wolves', 'Luton', 'Burnley', 'Sheffield United']
+        
+if season == '2024-25':
     league = st.sidebar.selectbox('Select a League', ['La Liga', 'Premier League', 'Serie A', 'UEFA Champions League'], key='league', index=None, on_change=reset_confirmed)
 
 
@@ -88,6 +99,7 @@ if season:
                 atn = st.sidebar.selectbox('Select Away Team Name', atn_options, key='away_team', index=None, on_change=reset_confirmed)
     
     if league and league != 'UEFA Champions League' and league != 'Serie A' and htn and atn:
+        season = season.replace('-', '_')
         league = league.replace(' ', '_')
         match_html_path = f"https://raw.githubusercontent.com/adnaaan433/{season}_{league}/refs/heads/main/{htn}_vs_{atn}.html"
         match_html_path = match_html_path.replace(' ', '%20')
@@ -101,6 +113,7 @@ if season:
             st.sidebar.write('Match not found')
             
     elif league and league == 'Serie A' and htn and atn:
+        season = season.replace('-', '_')
         league = league.replace(' ', '_')
         match_html_path = f"https://raw.githubusercontent.com/adnaaan433/{season}_{league}/refs/heads/main/{htn}_vs_{atn}.html"
         match_html_path = match_html_path.replace(' ', '%20')
@@ -111,9 +124,10 @@ if season:
             match_input = st.sidebar.button('Confirm Selections', on_click=lambda: st.session_state.update({'confirmed': True}))
         except:
             st.session_state['confirmed'] = False
-            st.sidebar.write('Serie A Matches available till GameWeek 12\nRemaining data will be uploaded soon\nThanks for your patience')
+            st.sidebar.write('Serie A Matches available till GameWeek 13\nRemaining data will be uploaded soon\nThanks for your patience')
             
     elif league and league == 'UEFA Champions League' and stage and htn and atn:
+        season = season.replace('-', '_')
         league = league.replace(' ', '_')
         match_html_path = f"https://raw.githubusercontent.com/adnaaan433/{season}_{league}/refs/heads/main/{stage}/{htn}_vs_{atn}.html"
         match_html_path = match_html_path.replace(' ', '%20')
