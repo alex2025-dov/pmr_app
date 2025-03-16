@@ -2922,6 +2922,7 @@ if season and league and htn and atn and st.session_state.confirmed:
             ax.text(34, -5, f'Total Touches: {len(actual_touch)}', fontsize=15, ha='center', va='center')
             return
         
+        subs_text = None
         def playing_time(pname):
             # Filter player data
             df_player = df[df['name'] == pname]
@@ -2940,10 +2941,12 @@ if season and league and htn and atn and st.session_state.confirmed:
             
             # Case 1: Started the game and was not substituted off
             if df_player['isFirstEleven'].unique()[0] == 1 and len(df_sub_off) == 0:
+                subs_text = None
                 mins_played = 90
         
             # Case 2: Started the game and was substituted off
             elif df_player['isFirstEleven'].unique()[0] == 1 and len(df_sub_off) == 1:
+                subs_text = 'Substituted Out'
                 sub_off_min = df_sub_off['minute'].unique()[0]
                 mins_played = min(90, sub_off_min)
                 if sub_off_min > 90:
@@ -2951,6 +2954,7 @@ if season and league and htn and atn and st.session_state.confirmed:
         
             # Case 3: Substituted on before or at the 80th minute
             elif df_player['isFirstEleven'].unique()[0] == 0 and len(df_sub_on) > 0:
+                subs_text = 'Substituted In'
                 sub_on_min = df_sub_on['minute'].unique()[0]
                 if sub_on_min <= 80:
                     mins_played = max_min - sub_on_min - extra_time
@@ -2960,6 +2964,7 @@ if season and league and htn and atn and st.session_state.confirmed:
             # Adjust for red cards
             df_red = df_player[(df_player['type'] == 'Card') & (df_player['qualifiers'].str.contains('SecondYellow|Red', na=False))]
             if len(df_red) == 1:
+                subs_text = 'Got Red Card'
                 red_min = df_red['minute'].max()
                 mins_played = mins_played - (90 - red_min)
         
@@ -2979,8 +2984,12 @@ if season and league and htn and atn and st.session_state.confirmed:
             
             # Add text and images to the figure
             fig.text(0.21, 1.02, f'{pname}', fontsize=50, fontweight='bold', ha='left', va='center')
-            fig.text(0.21, 0.97, f'in {hteamName} {hgoal_count} - {agoal_count} {ateamName}  |  Minutes played: {mins_played}', 
-                     fontsize=30, ha='left', va='center')
+            if subs_text == None:
+                fig.text(0.21, 0.97, f'in {hteamName} {hgoal_count} - {agoal_count} {ateamName}  |  Minutes played: {mins_played}', 
+                         fontsize=30, ha='left', va='center')
+            else:
+                fig.text(0.21, 0.97, f'in {hteamName} {hgoal_count} - {agoal_count} {ateamName}  |  Minutes played: {mins_played} (subs_tex)', 
+                         fontsize=30, ha='left', va='center')
             fig.text(0.87, 0.995, '@adnaaan433', fontsize=20, ha='right', va='center')
         
             himage = urlopen(f"https://images.fotmob.com/image_resources/logo/teamlogo/{ftmb_tid}.png")
