@@ -2922,7 +2922,7 @@ if season and league and htn and atn and st.session_state.confirmed:
             ax.text(34, -5, f'Total Touches: {len(actual_touch)}', fontsize=15, ha='center', va='center')
             return
         
-        subs_text = None
+        
         def playing_time(pname):
             # Filter player data
             df_player = df[df['name'] == pname]
@@ -2968,13 +2968,13 @@ if season and league and htn and atn and st.session_state.confirmed:
                 red_min = df_red['minute'].max()
                 mins_played = mins_played - (90 - red_min)
         
-            return int(mins_played)
+            return int(mins_played), subs_text
         
         def generate_player_dahsboard(pname, ftmb_tid):
             fig, axs = plt.subplots(1, 3, figsize=(27, 15), facecolor='#f5f5f5')
             
             # Calculate minutes played
-            mins_played = playing_time(pname)
+            mins_played, subs_text = playing_time(pname)
             
             # Generate individual plots
             offensive_actions(axs[0], pname)
@@ -2988,7 +2988,7 @@ if season and league and htn and atn and st.session_state.confirmed:
                 fig.text(0.21, 0.97, f'in {hteamName} {hgoal_count} - {agoal_count} {ateamName}  |  Minutes played: {mins_played}', 
                          fontsize=30, ha='left', va='center')
             else:
-                fig.text(0.21, 0.97, f'in {hteamName} {hgoal_count} - {agoal_count} {ateamName}  |  Minutes played: {mins_played} (subs_tex)', 
+                fig.text(0.21, 0.97, f'in {hteamName} {hgoal_count} - {agoal_count} {ateamName}  |  Minutes played: {mins_played} (subs_text)', 
                          fontsize=30, ha='left', va='center')
             fig.text(0.87, 0.995, '@adnaaan433', fontsize=20, ha='right', va='center')
         
